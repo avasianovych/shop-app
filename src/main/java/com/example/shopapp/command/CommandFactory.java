@@ -1,9 +1,14 @@
 package com.example.shopapp.command;
 
+import com.example.shopapp.service.OrderItemsServiceImpl;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class CommandFactory {
-
+    private static final Logger LOGGER = LogManager.getLogger(CommandFactory.class);
     private CommandFactory(){
     }
 
@@ -15,7 +20,7 @@ public class CommandFactory {
             try {
                 iCommand = CommandContainer.getCommand(command);
             }catch (IllegalArgumentException e){
-                e.printStackTrace();
+                LOGGER.log(Level.INFO, e);
                 iCommand = CommandContainer.getCommand("error");
             }
         }

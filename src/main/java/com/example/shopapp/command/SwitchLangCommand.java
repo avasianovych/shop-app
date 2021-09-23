@@ -12,7 +12,6 @@ public class SwitchLangCommand implements ICommand {
         builder.setLanguageTag(localeParameter);
         Locale locale = builder.build();
         req.getSession().setAttribute("locale", locale);
-        String header = req.getHeader("referer");
-        return header;
+        return req.getHeader("referer");
     }
 }

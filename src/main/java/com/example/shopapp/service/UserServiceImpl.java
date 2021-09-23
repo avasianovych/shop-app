@@ -1,23 +1,20 @@
 package com.example.shopapp.service;
 
-import com.example.shopapp.dao.DBManager;
-import com.example.shopapp.dao.SQLConstants;
 import com.example.shopapp.dao.SQLQueryMapper;
 import com.example.shopapp.dao.UserDao;
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.DaoException;
 import com.example.shopapp.exception.ServiceException;
-import com.example.shopapp.util.ConstantNames;
 import com.example.shopapp.util.Validator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+    private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
     private final UserDao userDao = UserDao.getInstance();
     private static UserServiceImpl instance;
 
@@ -31,14 +28,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByLogin(String login) throws ServiceException {
         User user;
-        try{
+        try {
             user = userDao.findByLogin(login);
-        } catch (DaoException e){
+        } catch (DaoException e) {
             e.printStackTrace();
             throw new ServiceException("error while trying to find user by login", e);
         }
         return user;
     }
+
 
     @Override
     public boolean isLoginExist(String login) throws ServiceException {
@@ -48,23 +46,38 @@ public class UserServiceImpl implements UserService {
             }
         } catch (DaoException e) {
             e.printStackTrace();
-            throw new ServiceException(ConstantNames.ERROR_EMAIL_EXIST);
+            throw new ServiceException("an error while trying to find exist login", e);
         }
         return false;
     }
 
     @Override
-    public void update(int userId, String action) {
+    public void update(int userId, String action) throws ServiceException {
         if (action.equals("block")) {
-            userDao.update(userId, SQLQueryMapper.BLOCK_USER);
+            try {
+                userDao.update(userId, SQLQueryMapper.BLOCK_USER);
+            }catch (DaoException e){
+                LOGGER.log(Level.ERROR, e);
+                throw new ServiceException("an error occurred while trying to block user ", e);
+            }
         } else if (action.equals("unblock")) {
-            userDao.update(userId, SQLQueryMapper.UNBLOCK_USER);
+            try {
+                userDao.update(userId, SQLQueryMapper.UNBLOCK_USER);
+            }catch (DaoException e){
+                LOGGER.log(Level.ERROR,e);
+                throw new ServiceException("an error occurred while trying to unblock user", e);
+            }
         }
     }
 
     @Override
-    public List<User> findAll() {
-        return userDao.findAll();
+    public List<User> findAll() throws ServiceException {
+        try {
+            return userDao.findAll();
+        } catch (DaoException e) {
+            LOGGER.log(Level.ERROR, e);
+            throw new ServiceException("an error occurred while trying to find all users", e);
+        }
     }
 
     @Override
@@ -79,6 +92,16 @@ public class UserServiceImpl implements UserService {
         } catch (DaoException e) {
             e.printStackTrace();
             throw new ServiceException("error while trying to add new user");
+        }
+    }
+
+    @Override
+    public User findUserByOrderId(int orderId) throws ServiceException {
+        try{
+            return userDao.findUserByOrderId(orderId);
+        }catch (DaoException e){
+            LOGGER.log(Level.ERROR, e);
+            throw new ServiceException("an error occurred while trying to find user by order id");
         }
     }
 }

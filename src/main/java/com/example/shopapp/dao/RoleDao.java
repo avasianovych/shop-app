@@ -1,6 +1,10 @@
 package com.example.shopapp.dao;
 
 import com.example.shopapp.entity.Role;
+import com.example.shopapp.exception.DaoException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +13,7 @@ import java.sql.SQLException;
 
 
 public class RoleDao extends AbstractDao<Role> {
-
+    private static final Logger LOGGER = LogManager.getLogger(RoleDao.class);
     private static RoleDao instance;
 
     public static RoleDao getInstance() {
@@ -19,8 +23,7 @@ public class RoleDao extends AbstractDao<Role> {
         return instance;
     }
 
-
-    public String findByLogin(String login) {
+    public String findByLogin(String login) throws DaoException {
         DBManager dbManager = DBManager.getInstance();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -34,22 +37,11 @@ public class RoleDao extends AbstractDao<Role> {
                 role.setName(rs.getString("name"));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to find role by login", e);
         } finally {
-                try {
-                    if (stmt != null) {
-                        stmt.close();
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    if (rs != null) {
-                        rs.close();
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                close(stmt);
+                close(rs);
         }
         return role.getName();
     }

@@ -26,22 +26,26 @@ public class LoginCommand implements ICommand {
         String role;
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        User user;
-        try{
+        User user = null;
+        try {
             user = userService.findByLogin(login);
-        }catch (ServiceException e){
+        } catch (ServiceException e) {
             LOGGER.log(Level.ERROR, e);
-            throw new CommandException("an error occurred while trying to log you in");
         }
-        if (user.getId() == 0) {
+        if (user != null && user.getId() == 0) {
             req.getSession().setAttribute("loginError", "1");
             return "login.jsp";
-        } else if (user.isBlock()) {
+        } else if (user != null && user.isBlock()) {
             req.getSession().setAttribute("loginError", "2");
             return "login.jsp";
-        } else if (password.equals(user.getPassword())) {
-            role = roleService.findByLogin(login);
-            req.getSession().setAttribute("role", role);
+        } else if (user != null && password.equals(user.getPassword())) {
+            try {
+                role = roleService.findByLogin(login);
+                req.getSession().setAttribute("role", role);
+            }catch (ServiceException e){
+                LOGGER.log(Level.ERROR, e);
+                throw new CommandException("an error occurred while trying to log you in");
+            }
         } else {
             req.getSession().setAttribute("loginError", "3");
             return "login.jsp";
@@ -49,16 +53,26 @@ public class LoginCommand implements ICommand {
         req.getSession().setAttribute("user", user);
 
         if (role != null && role.equals("admin")) {
-            List<Category> categoryList = categoryService.findAll();
-            req.getSession().setAttribute("categoryList", categoryList);
-            List<Order> allOrdersList = orderService.findAll();
-            req.getSession().setAttribute("allOrdersList", allOrdersList);
-            List<User> allUsersList = userService.findAll();
-            req.getSession().setAttribute("allUsersList", allUsersList);
+            try {
+                List<Category> categoryList = categoryService.findAll();
+                req.getSession().setAttribute("categoryList", categoryList);
+                List<Order> allOrdersList = orderService.findAll();
+                req.getSession().setAttribute("allOrdersList", allOrdersList);
+                List<User> allUsersList = userService.findAll();
+                req.getSession().setAttribute("allUsersList", allUsersList);
+            } catch (ServiceException e) {
+                LOGGER.log(Level.ERROR, e);
+                throw new CommandException("an error occurred while trying to log you in");
+            }
             return "admin.jsp";
         }
-        List<Order> orderList = orderService.getUserOrders(user);
-        req.getSession().setAttribute("orderList", orderList);
+        try {
+            List<Order> orderList = orderService.getUserOrders(user);
+            req.getSession().setAttribute("orderList", orderList);
+        } catch (ServiceException e) {
+            LOGGER.log(Level.ERROR, e);
+            throw new CommandException("an error occurred while trying to log you in");
+        }
         return "bikeShop.jsp";
     }
 }

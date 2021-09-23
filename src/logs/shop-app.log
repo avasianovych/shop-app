@@ -81,3 +81,12 @@ com.example.shopapp.exception.ServiceException: 1
 2021-09-23 12:06:22 [http-nio-8080-exec-6] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to log you in
 2021-09-23 12:08:17 [http-nio-8080-exec-5] ERROR com.example.shopapp.command.LoginCommand - com.example.shopapp.exception.ServiceException: error while trying to find user by login
 2021-09-23 12:08:17 [http-nio-8080-exec-5] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to log you in
+2021-09-23 15:54:11 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-09-23 15:54:11 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-09-23 15:54:16 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-09-23 15:54:16 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-09-23 15:54:16 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-09-23 15:54:23 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-09-23 15:54:23 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-09-23 19:46:14 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-09-23 19:46:14 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""

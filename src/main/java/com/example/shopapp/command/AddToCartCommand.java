@@ -1,11 +1,14 @@
 package com.example.shopapp.command;
 
 import com.example.shopapp.entity.Cart;
-import com.example.shopapp.entity.User;
+
+import com.example.shopapp.exception.CommandException;
+import com.example.shopapp.exception.ServiceException;
 import com.example.shopapp.service.CartService;
 import com.example.shopapp.service.CartServiceImpl;
-import com.example.shopapp.service.ProductService;
-import com.example.shopapp.service.ProductServiceImpl;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddToCartCommand implements ICommand {
-
+    private static final Logger LOGGER = LogManager.getLogger(AddToCartCommand.class);
     CartService cartService = CartServiceImpl.getInstance();
 
     @Override
-    public String execute(HttpServletRequest req, HttpServletResponse resp) {
+    public String execute(HttpServletRequest req, HttpServletResponse resp) throws CommandException {
         List<Cart> newCartList = new ArrayList<>();
         int totalPrice;
 //        @SuppressWarnings("unchecked")
@@ -31,10 +34,15 @@ public class AddToCartCommand implements ICommand {
 
         @SuppressWarnings("unchecked")
         ArrayList<Cart> existCartList = (ArrayList<Cart>) session.getAttribute("fillCart");
-
         if (existCartList == null) {
             newCartList.add(cart);
-            List<Cart> fillCart = cartService.findCartProducts(newCartList);
+            List<Cart> fillCart;
+            try {
+                fillCart = cartService.findCartProducts(newCartList);
+            }catch (ServiceException e){
+                LOGGER.log(Level.ERROR, e);
+                throw new CommandException("an error happened while trying to add product to the cart");
+            }
             totalPrice = cartService.getTotalPrice(fillCart);
             session.setAttribute("cart-list", newCartList);
             session.setAttribute("fillCart", fillCart);
@@ -48,7 +56,13 @@ public class AddToCartCommand implements ICommand {
                 }
             }
             newCartList.add(cart);
-            List<Cart> fillCart = cartService.findCartProducts(newCartList);
+            List<Cart> fillCart;
+            try {
+                fillCart = cartService.findCartProducts(newCartList);
+            }catch (ServiceException e){
+                LOGGER.log(Level.ERROR, e);
+                throw new CommandException("an error happened while trying to add product to the cart");
+            }
             totalPrice = cartService.getTotalPrice(fillCart);
             session.setAttribute("cart-list", newCartList);
             session.setAttribute("fillCart", fillCart);

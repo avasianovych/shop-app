@@ -9,9 +9,6 @@ public class Order extends Entity{
     private int totalPrice;
     private Timestamp timestamp;
 
-//    public Order(User user, State state, int totalPrice, Timestamp timestamp){
-//        su
-//    }
 
     public User getUser() {
         return user;

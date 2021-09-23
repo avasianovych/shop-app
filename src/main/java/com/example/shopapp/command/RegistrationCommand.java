@@ -4,7 +4,6 @@ import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.ServiceException;
 import com.example.shopapp.service.UserService;
 import com.example.shopapp.service.UserServiceImpl;
-import com.example.shopapp.util.ConstantNames;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,7 +35,7 @@ public class RegistrationCommand implements ICommand {
             userService.add(user);
             req.getSession().setAttribute("registrationError", "4");
         } catch (ServiceException e) {
-            LOGGER.log(Level.INFO,"an error occurred during registration", e);
+            LOGGER.log(Level.INFO, "an error occurred during registration", e);
             req.getSession().setAttribute("registrationError", e.getMessage());
         }
         return page;

@@ -1,6 +1,11 @@
 package com.example.shopapp.dao;
 
+import com.example.shopapp.command.LoginCommand;
 import com.example.shopapp.entity.Category;
+import com.example.shopapp.exception.DaoException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +16,8 @@ import java.util.List;
 
 public class CategoryDao extends AbstractDao<Category> {
 
+    private static final Logger LOGGER = LogManager.getLogger(CategoryDao.class);
+
     private static CategoryDao instance;
 
     public static CategoryDao getInstance() {
@@ -20,29 +27,29 @@ public class CategoryDao extends AbstractDao<Category> {
         return instance;
     }
 
-    int findByName(String categoryName){
-        DBManager dbManager = DBManager.getInstance();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        Category category = new Category();
-        try(Connection connection = dbManager.getConnection()){
-            stmt = connection.prepareStatement(SQLConstants.FIND_CATEGORY_ID_BY_NAME);
-            stmt.setString(1,categoryName);
-            rs = stmt.executeQuery();
-            while (rs.next()){
-                category.setId(rs.getInt("id"));
-                category.setName(rs.getString("name"));
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        } finally {
-                close(stmt);
-                close(rs);
-        }
-        return category.getId();
-    }
+//    int findByName(String categoryName){
+//        DBManager dbManager = DBManager.getInstance();
+//        PreparedStatement stmt = null;
+//        ResultSet rs = null;
+//        Category category = new Category();
+//        try(Connection connection = dbManager.getConnection()){
+//            stmt = connection.prepareStatement(SQLConstants.FIND_CATEGORY_ID_BY_NAME);
+//            stmt.setString(1,categoryName);
+//            rs = stmt.executeQuery();
+//            while (rs.next()){
+//                category.setId(rs.getInt("id"));
+//                category.setName(rs.getString("name"));
+//            }
+//        }catch(SQLException e){
+//            e.printStackTrace();
+//        } finally {
+//                close(stmt);
+//                close(rs);
+//        }
+//        return category.getId();
+//    }
 
-    public List<Category> findAll(){
+    public List<Category> findAll() throws DaoException {
         DBManager dbManager = DBManager.getInstance();
         ResultSet rs = null;
         List<Category> categoryList = new ArrayList<>();
@@ -56,7 +63,8 @@ public class CategoryDao extends AbstractDao<Category> {
                 categoryList.add(category);
             }
         }catch (SQLException e){
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to find all categories", e);
         }finally {
             close(rs);
         }

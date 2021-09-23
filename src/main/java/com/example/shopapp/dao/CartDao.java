@@ -1,6 +1,11 @@
 package com.example.shopapp.dao;
 
 import com.example.shopapp.entity.Cart;
+import com.example.shopapp.exception.DaoException;
+import com.example.shopapp.exception.ServiceException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartDao extends AbstractDao<Cart>{
-
+    private static final Logger LOGGER = LogManager.getLogger(CartDao.class);
     private static CartDao instance;
 
     public static CartDao getInstance() {
@@ -20,7 +25,7 @@ public class CartDao extends AbstractDao<Cart>{
         return instance;
     }
 
-    public List<Cart> findCartProducts(List<Cart> cartList) {
+    public List<Cart> findCartProducts(List<Cart> cartList) throws DaoException {
         DBManager dbManager = DBManager.getInstance();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -28,7 +33,6 @@ public class CartDao extends AbstractDao<Cart>{
         try (Connection connection = dbManager.getConnection()) {
             stmt = connection.prepareStatement(SQLConstants.FIND_CART_PRODUCTS);
             for (Cart item : cartList) {
-
                 stmt.setInt(1, item.getId());
                 rs = stmt.executeQuery();
                 while (rs.next()) {
@@ -46,7 +50,8 @@ public class CartDao extends AbstractDao<Cart>{
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to find cart products", e);
         } finally {
             close(stmt);
             close(rs);

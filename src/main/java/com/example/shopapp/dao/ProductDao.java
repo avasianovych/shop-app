@@ -2,6 +2,9 @@ package com.example.shopapp.dao;
 
 import com.example.shopapp.entity.Product;
 import com.example.shopapp.exception.DaoException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ProductDao extends AbstractDao<Product> {
-
+    private static final Logger LOGGER = LogManager.getLogger(ProductDao.class);
     private static ProductDao instance;
 
     public static ProductDao getInstance() {
@@ -19,7 +22,7 @@ public class ProductDao extends AbstractDao<Product> {
         return instance;
     }
 
-    public void delete(int productId) {
+    public void delete(int productId) throws DaoException {
         DBManager dbManager = DBManager.getInstance();
         try (Connection connection = dbManager.getConnection();
              PreparedStatement stmt = connection.prepareStatement(SQLConstants.DELETE_PRODUCT_BY_ID)) {
@@ -27,11 +30,12 @@ public class ProductDao extends AbstractDao<Product> {
             stmt.setInt(1, productId);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to delete product", e);
         }
     }
 
-    public void add(String category, String name, String description, String madeIn, String color, String price) {
+    public void add(String category, String name, String description, String madeIn, String color, String price) throws DaoException {
         DBManager dbManager = DBManager.getInstance();
         Date now = new Date();
         Timestamp timestamp = new Timestamp(now.getTime());
@@ -47,7 +51,8 @@ public class ProductDao extends AbstractDao<Product> {
             stmt.setTimestamp(7, timestamp);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to add new product", e);
         }
     }
 
@@ -65,12 +70,12 @@ public class ProductDao extends AbstractDao<Product> {
             stmt.setInt(7, id);
             int row = stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
             throw new DaoException("error while trying to update information about product", e);
         }
     }
 
-    public Product findById(int productId) {
+    public Product findById(int productId) throws DaoException {
         DBManager dbManager = DBManager.getInstance();
         ResultSet rs = null;
         Product product = new Product();
@@ -82,14 +87,15 @@ public class ProductDao extends AbstractDao<Product> {
                 product = createProductFromResultSet(rs);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to find product by id", e);
         } finally {
             close(rs);
         }
         return product;
     }
 
-    public List<Product> findAll() {
+    public List<Product> findAll() throws DaoException {
         DBManager dbManager = DBManager.getInstance();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -101,7 +107,8 @@ public class ProductDao extends AbstractDao<Product> {
                 allProducts.add(createProductFromResultSet(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to find all products", e);
         } finally {
             close(stmt);
             close(rs);
@@ -121,7 +128,7 @@ public class ProductDao extends AbstractDao<Product> {
             product.setDescription(rs.getString("description"));
             product.setTimestamp(rs.getTimestamp("timestamp"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
         }
         return product;
     }

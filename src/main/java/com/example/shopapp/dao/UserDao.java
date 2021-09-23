@@ -2,6 +2,9 @@ package com.example.shopapp.dao;
 
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.DaoException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao extends AbstractDao<User> {
+    private static final Logger LOGGER = LogManager.getLogger(UserDao.class);
     private static UserDao instance;
 
     public static UserDao getInstance() {
@@ -31,40 +35,39 @@ public class UserDao extends AbstractDao<User> {
             stmt.setString(4, user.getPassword());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
             throw new DaoException("error while trying to add new user", e);
         }
     }
 
     public User findByLogin(String login) throws DaoException {
-//        DBManager dbManager = DBManager.getInstance();
-//        PreparedStatement stmt = null;
-//        ResultSet rs = null;
-//        User user = new User();
-//        try (Connection connection = dbManager.getConnection()) {
-//            stmt = connection.prepareStatement(SQLConstants.FIND_USER_BY_LOGIN);
-//            stmt.setString(1, login);
-//            rs = stmt.executeQuery();
-//            while (rs.next()) {
-//                user.setId(rs.getInt("id"));
-//                user.setName(rs.getString("name"));
-//                user.setSurname(rs.getString("surname"));
-//                user.setRole_id(rs.getInt("role_id"));
-//                user.setLogin(rs.getString("login"));
-//                user.setPassword(rs.getString("password"));
-//                user.setBlock(rs.getBoolean("isBlock"));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-            throw new DaoException("error while trying find user by login");
-//        } finally {
-//            close(stmt);
-//            close(rs);
-//        }
-        //        return user;
+        DBManager dbManager = DBManager.getInstance();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        User user = new User();
+        try (Connection connection = dbManager.getConnection()) {
+            stmt = connection.prepareStatement(SQLConstants.FIND_USER_BY_LOGIN);
+            stmt.setString(1, login);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setSurname(rs.getString("surname"));
+                user.setRole_id(rs.getInt("role_id"));
+                user.setLogin(rs.getString("login"));
+                user.setPassword(rs.getString("password"));
+                user.setBlock(rs.getBoolean("isBlock"));
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.ERROR, e);
+        } finally {
+            close(stmt);
+            close(rs);
+        }
+                return user;
     }
 
-    public void update(int userId, String query) {
+    public void update(int userId, String query) throws DaoException {
         DBManager dbManager = DBManager.getInstance();
         try (Connection connection = dbManager.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -72,11 +75,12 @@ public class UserDao extends AbstractDao<User> {
             stmt.setInt(1, userId);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to update usr state", e);
         }
     }
 
-    public List<User> findAll() {
+    public List<User> findAll() throws DaoException {
         DBManager dbManager = DBManager.getInstance();
         ResultSet rs = null;
         List<User> userList = new ArrayList<>();
@@ -94,7 +98,8 @@ public class UserDao extends AbstractDao<User> {
                 userList.add(user);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to find all users", e);
         } finally {
             close(rs);
         }
@@ -113,11 +118,35 @@ public class UserDao extends AbstractDao<User> {
                 isExist = true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DaoException("error while looking for a existing login", e);
+            LOGGER.log(Level.ERROR,e);
+            throw new DaoException("error while trying to find exist login", e);
         } finally {
             close(rs);
         }
         return isExist;
+    }
+
+    public User findUserByOrderId(int orderId) throws DaoException {
+        DBManager dbManager = DBManager.getInstance();
+        ResultSet rs = null;
+        User user = new User();
+        try(Connection connection = dbManager.getConnection();
+        PreparedStatement stmt = connection.prepareStatement(SQLConstants.FIND_USER_BY_ORDER_ID)){
+            stmt.setInt(1, orderId);
+            rs = stmt.executeQuery();
+            while (rs.next()){
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setName(rs.getString("surname"));
+                user.setRole_id(rs.getInt("role_id"));
+                user.setLogin(rs.getString("login"));
+            }
+        }catch (SQLException e){
+            LOGGER.log(Level.ERROR, e);
+            throw new DaoException("an error occurred while trying to find user by order id", e);
+        }finally {
+            close(rs);
+        }
+        return user;
     }
 }

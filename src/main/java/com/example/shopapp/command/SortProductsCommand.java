@@ -19,7 +19,7 @@ public class SortProductsCommand implements ICommand {
         int page = 1;
         int recordsPerPage = 8;
 
-User user = (User) req.getSession().getAttribute("user");
+        User user = (User) req.getSession().getAttribute("user");
         @SuppressWarnings("unchecked")
         List<Product> products = (List<Product>) req.getSession().getAttribute("allProducts");
         int noOfRecords = products.size();
@@ -66,7 +66,7 @@ User user = (User) req.getSession().getAttribute("user");
         req.getSession().setAttribute("currentPage", page);
         req.getSession().setAttribute("noOfPages", noOfPages);
         req.getSession().setAttribute("currentPageRecords", currentPageRecords);
-        if(user != null && user.getRole_id() == 1){
+        if (user != null && user.getRole_id() == 1) {
             return "admin.jsp";
         }
         return "bikeShop.jsp";

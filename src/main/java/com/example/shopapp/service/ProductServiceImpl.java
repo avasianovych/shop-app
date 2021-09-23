@@ -3,20 +3,18 @@ package com.example.shopapp.service;
 
 import com.example.shopapp.dao.ProductDao;
 
-import com.example.shopapp.dao.SQLQueryMapper;
-import com.example.shopapp.entity.Cart;
 import com.example.shopapp.entity.Product;
 import com.example.shopapp.exception.DaoException;
 import com.example.shopapp.exception.ServiceException;
-import com.example.shopapp.util.ConstantNames;
 import com.example.shopapp.util.Validator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class ProductServiceImpl implements ProductService {
+    private static final Logger LOGGER = LogManager.getLogger(ProductServiceImpl.class);
     ProductDao productDao = ProductDao.getInstance();
     private static ProductServiceImpl instance;
 
@@ -27,8 +25,13 @@ public class ProductServiceImpl implements ProductService {
         return instance;
     }
 
-    public Product findById(int productId) {
-        return productDao.findById(productId);
+    public Product findById(int productId) throws ServiceException {
+        try {
+            return productDao.findById(productId);
+        } catch (DaoException e) {
+            LOGGER.log(Level.ERROR, e);
+            throw new ServiceException("an error occurred while trying to find product by id", e);
+        }
     }
 
     @Override
@@ -48,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
         }
         try {
             productDao.updateById(id, name, description, color, price, madeIn, category);
-        }catch (DaoException e){
+        } catch (DaoException e) {
             e.printStackTrace();
             throw new ServiceException("an error while trying to update information about product", e);
         }
@@ -69,18 +72,32 @@ public class ProductServiceImpl implements ProductService {
         } else if (category == null) {
             throw new ServiceException("6");
         }
-
-        productDao.add(category, name, description, madeIn, color, price);
+        try {
+            productDao.add(category, name, description, madeIn, color, price);
+        } catch (DaoException e) {
+            LOGGER.log(Level.ERROR, e);
+            throw new ServiceException("an error occurred while trying to add new product", e);
+        }
     }
 
     @Override
-    public void delete(int productId) {
-        productDao.delete(productId);
+    public void delete(int productId) throws ServiceException {
+        try {
+            productDao.delete(productId);
+        } catch (DaoException e) {
+            LOGGER.log(Level.ERROR, e);
+            throw new ServiceException("an error occurred while trying to delete product", e);
+        }
     }
 
     @Override
-    public List<Product> findAll() {
-        return productDao.findAll();
+    public List<Product> findAll() throws ServiceException {
+        try {
+            return productDao.findAll();
+        } catch (DaoException e) {
+            LOGGER.log(Level.ERROR, e);
+            throw new ServiceException("an error occurred while trying to find all product", e);
+        }
     }
 
 
