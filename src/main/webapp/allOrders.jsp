@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
   <title>All orders</title>
@@ -8,16 +9,16 @@
 <body>
 <%@include file="/includes/navbarForAdmin.jsp"%>
 <div class="container my-3 w-80">
-  <div class="d-flex py-3"><h3>All orders</h3></div>
+  <div class="d-flex py-3"><h3><fmt:message key="allOrders.allOrders"/></h3></div>
 
   <table class="table table-light">
     <thead>
     <tr>
-      <th scope="col">Order №</th>
-      <th scope="col">Total price</th>
-      <th scope="col">State</th>
-      <th scope="col">Login</th>
-      <th scope="col">Creation date</th>
+      <th scope="col"><fmt:message key="allOrders.orderNumber"/></th>
+      <th scope="col"><fmt:message key="allOrders.totalPrice"/></th>
+      <th scope="col"><fmt:message key="allOrders.state"/></th>
+      <th scope="col"><fmt:message key="allOrders.login"/></th>
+      <th scope="col"><fmt:message key="allOrders.date"/></th>
     </tr>
     </thead>
     <tbody>
@@ -34,13 +35,13 @@
           <input name="command" type="hidden" value="changeOrderState">
           <input name="state" type="hidden" value="paid">
           <input name="id" type="hidden" value="${order.id}">
-          <button type="submit" class="btn btn-primary">Paid</button>
+          <button type="submit" class="btn btn-primary"><fmt:message key="button.paid"/></button>
         </form>
             <form action="controller" method="post">
               <input name="command" type="hidden" value="changeOrderState">
               <input name="state" type="hidden" value="cancelled">
               <input name="id" type="hidden" value="${order.id}">
-              <button type="submit" class="btn btn-danger">Cancelled</button>
+              <button type="submit" class="btn btn-danger"><fmt:message key="button.cancelled"/></button>
             </form>
           </div>
         </td>

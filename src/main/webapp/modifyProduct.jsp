@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c"
            uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
     <title>Modify product</title>
@@ -39,36 +40,36 @@
                 <input name="command" type="hidden" value="modifyProduct">
                 <input name="id" type="hidden" value="${product.id}">
                 <div class="form-group">
-                    <label>Name</label>
+                    <label><fmt:message key="product.name"/></label>
                     <input type="text" name="name" value="" class="form-control" placeholder="${product.name}">
                 </div>
                 <div class="form-group">
-                    <label>Description</label>
+                    <label><fmt:message key="product.description"/></label>
                     <input type="text" name="description" value="" class="form-control" placeholder="${product.description}">
                 </div>
                 <div class="form-group">
-                    <label>Color</label>
+                    <label><fmt:message key="product.color"/></label>
                     <input type="text" name="color" value="" class="form-control" placeholder="${product.color}">
                 </div>
                 <div class="form-group">
-                    <label>Price</label>
+                    <label><fmt:message key="product.price"/></label>
                     <input type="text" name="price" value="" class="form-control" placeholder="${product.price}">
                 </div>
                 <div class="form-group">
-                    <label>Made in</label>
+                    <label><fmt:message key="product.madeIn"/></label>
                     <input type="text" name="madeIn" value="" class="form-control" placeholder="${product.madeIn}">
                 </div>
                 <div class="form-group">
                     <label>Category</label>
                     <select class="custom-select" name="category">
-                        <option selected disabled>Choose category</option>
+                        <option selected disabled><fmt:message key="product.chooseCategory"/></option>
                     <c:forEach var="category" items="${categoryList}">
                         <option>${category.name}</option>
                     </c:forEach>
                     </select>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary"><fmt:message key="bikeShop.submit"/></button>
                 </div>
             </form>
         </div>

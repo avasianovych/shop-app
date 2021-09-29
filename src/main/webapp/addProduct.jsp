@@ -39,36 +39,36 @@
             <form action="controller" method="post">
                 <input name="command" type="hidden" value="addNewProduct">
                 <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" name="name" value="" class="form-control" placeholder="name">
+                    <label><fmt:message key="product.name"/></label>
+                    <input type="text" name="name" value="" class="form-control" placeholder="<fmt:message key="product.name"/>">
                 </div>
                 <div class="form-group">
-                    <label>Description</label>
-                    <input type="text" name="description" value="" class="form-control" placeholder="description">
+                    <label><fmt:message key="product.description"/></label>
+                    <input type="text" name="description" value="" class="form-control" placeholder="<fmt:message key="product.description"/>">
                 </div>
                 <div class="form-group">
-                    <label>Color</label>
-                    <input type="text" name="color" value="" class="form-control" placeholder="color">
+                    <label><fmt:message key="product.color"/></label>
+                    <input type="text" name="color" value="" class="form-control" placeholder="<fmt:message key="product.color"/>">
                 </div>
                 <div class="form-group">
-                    <label>Price</label>
-                    <input type="text" name="price" value="" class="form-control"  placeholder="price">
+                    <label><fmt:message key="product.price"/></label>
+                    <input type="text" name="price" value="" class="form-control"  placeholder="<fmt:message key="product.price"/>">
                 </div>
                 <div class="form-group">
-                    <label>Made in</label>
-                    <input type="text" name="madeIn" value="" class="form-control" placeholder="made in">
+                    <label><fmt:message key="product.madeIn"/></label>
+                    <input type="text" name="madeIn" value="" class="form-control" placeholder="<fmt:message key="product.madeIn"/>">
                 </div>
                 <div class="form-group">
-                    <label>Category</label>
+                    <label><fmt:message key="product.category"/></label>
                     <select class="custom-select" name="category">
-                        <option selected disabled>Choose category</option>
+                        <option selected disabled><fmt:message key="product.chooseCategory"/></option>
                         <c:forEach var="category" items="${categoryList}">
                             <option>${category.name}</option>
                         </c:forEach>
                     </select>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary"><fmt:message key="bikeShop.submit"/></button>
                 </div>
             </form>
         </div>
