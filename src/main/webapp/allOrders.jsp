@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Cart</title>
+  <title>All orders</title>
   <%@include file="/includes/head.jsp"%>
 </head>
 <body>
@@ -21,7 +21,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="order" items="${allOrdersList}">
+    <c:forEach var="order" items="${currentPageRecordsOrders}">
       <tr>
         <td>${order.id}</td>
         <td>$${order.totalPrice}</td>
@@ -47,6 +47,20 @@
       </tr>
     </c:forEach>
     </tbody>
+  </table>
+  <table border="1" cellpadding="5" cellspacing="5">
+    <tr>
+      <c:forEach begin="1" end="${noOfPagesOrders}" var="i">
+        <c:choose>
+          <c:when test="${currentPageOrders eq i}">
+            <td>${i}</td>
+          </c:when>
+          <c:otherwise>
+            <td><a href="/controller?command=pagination&page=${i}&action=orders">${i}</a></td>
+          </c:otherwise>
+        </c:choose>
+      </c:forEach>
+    </tr>
   </table>
 </div>
 <%@include file="/includes/footer.jsp"%>

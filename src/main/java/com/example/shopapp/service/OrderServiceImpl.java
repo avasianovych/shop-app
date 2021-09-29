@@ -3,6 +3,7 @@ package com.example.shopapp.service;
 import com.example.shopapp.dao.OrderDao;
 import com.example.shopapp.entity.Cart;
 import com.example.shopapp.entity.Order;
+import com.example.shopapp.entity.Product;
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.DaoException;
 import com.example.shopapp.exception.ServiceException;
@@ -76,5 +77,15 @@ public class OrderServiceImpl implements OrderService {
             LOGGER.log(Level.ERROR, e);
             throw new ServiceException("an error occurred while trying to set cancelled state", e);
         }
+    }
+
+    @Override
+    public List<Order> getCurrentPageRecords(List<Order> totalList, int currentPageNo) {
+        if (totalList == null) {
+            return null;
+        }
+        int startIndex = (currentPageNo - 1) * 5;
+        int endIndex = (startIndex + 5 > totalList.size() ? totalList.size() : startIndex + 5);
+        return totalList.subList(startIndex, endIndex);
     }
 }

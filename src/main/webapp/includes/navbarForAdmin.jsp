@@ -28,8 +28,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link text-white" href="admin.jsp"><fmt:message key="header.products"/></a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="allUsers.jsp"><fmt:message key="header.users"/></a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="allOrders.jsp"><fmt:message key="header.orders"/></a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/controller?command=getAllUsers"><fmt:message key="header.users"/></a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/controller?command=getAllOrders"><fmt:message key="header.orders"/></a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="/controller?command=logout"><fmt:message key="header.logout"/></a></li>
             </ul>
         </div>

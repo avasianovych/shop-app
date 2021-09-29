@@ -29,6 +29,9 @@ public class CommandContainer {
         commands.put("pagination", new PaginationCommand());
         commands.put("switchLang", new SwitchLangCommand());
         commands.put("registration", new RegistrationCommand());
+        commands.put("getUserOrders", new GetUserOrdersCommand());
+        commands.put("getAllUsers", new GetAllUsersCommand());
+        commands.put("getAllOrders", new GetAllOrdersCommand());
 
     }
 

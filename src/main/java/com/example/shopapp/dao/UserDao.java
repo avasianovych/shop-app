@@ -126,28 +126,4 @@ public class UserDao extends AbstractDao<User> {
         }
         return isExist;
     }
-
-    public User findUserByOrderId(int orderId) throws DaoException {
-        DBManager dbManager = DBManager.getInstance();
-        ResultSet rs = null;
-        User user = new User();
-        try (Connection connection = dbManager.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(SQLConstants.FIND_USER_BY_ORDER_ID)) {
-            stmt.setInt(1, orderId);
-            rs = stmt.executeQuery();
-            while (rs.next()) {
-                user.setId(rs.getInt("id"));
-                user.setName(rs.getString("name"));
-                user.setName(rs.getString("surname"));
-                user.setRole_id(rs.getInt("role_id"));
-                user.setLogin(rs.getString("login"));
-            }
-        } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, e);
-            throw new DaoException("an error occurred while trying to find user by order id", e);
-        } finally {
-            close(rs);
-        }
-        return user;
-    }
 }

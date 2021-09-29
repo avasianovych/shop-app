@@ -1,7 +1,5 @@
 package com.example.shopapp.command;
 
-import com.example.shopapp.entity.Category;
-import com.example.shopapp.entity.Order;
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.CommandException;
 import com.example.shopapp.exception.ServiceException;
@@ -12,14 +10,12 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+
 
 public class LoginCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(LoginCommand.class);
     UserService userService = UserServiceImpl.getInstance();
     RoleService roleService = RoleServiceImpl.getInstance();
-    OrderService orderService = OrderServiceImpl.getInstance();
-    CategoryService categoryService = CategoryServiceImpl.getInstance();
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws CommandException {
@@ -52,27 +48,9 @@ public class LoginCommand implements ICommand {
         }
         req.getSession().setAttribute("user", user);
 
-        if (role != null && role.equals("admin")) {
-            try {
-                List<Category> categoryList = categoryService.findAll();
-                req.getSession().setAttribute("categoryList", categoryList);
-                List<Order> allOrdersList = orderService.findAll();
-                req.getSession().setAttribute("allOrdersList", allOrdersList);
-                List<User> allUsersList = userService.findAll();
-                req.getSession().setAttribute("allUsersList", allUsersList);
-            } catch (ServiceException e) {
-                LOGGER.log(Level.ERROR, e);
-                throw new CommandException("an error occurred while trying to log you in");
-            }
+        if (role != null && role.equals("admin"))
             return "admin.jsp";
-        }
-        try {
-            List<Order> orderList = orderService.getUserOrders(user);
-            req.getSession().setAttribute("orderList", orderList);
-        } catch (ServiceException e) {
-            LOGGER.log(Level.ERROR, e);
-            throw new CommandException("an error occurred while trying to log you in");
-        }
+
         return "bikeShop.jsp";
     }
 }

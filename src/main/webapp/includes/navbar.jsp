@@ -27,7 +27,7 @@
                     <li class="nav-item"><a class="nav-link text-white" href="login.jsp"><fmt:message key="header.login"/></a></li>
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
-                    <li class="nav-item"><a class="nav-link text-white" href="account.jsp"><fmt:message key="header.account"/></a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="/controller?command=getUserOrders"><fmt:message key="header.account"/></a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="/controller?command=logout" ><fmt:message key="header.logout"/></a></li>
                 </c:if>
             </ul>

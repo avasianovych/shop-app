@@ -58,13 +58,6 @@ public class FindAllProductsCommand implements ICommand {
         req.getSession().setAttribute("allProducts", allProducts);
         if (user != null && user.getRole_id() == 1) {
             return "admin.jsp";
-        } else if (user != null && user.getRole_id() == 2) {
-            try {
-                List<Order> orderList = orderService.getUserOrders(user);
-                req.getSession().setAttribute("orderList", orderList);
-            } catch (ServiceException e) {
-                LOGGER.log(Level.ERROR, e);
-            }
         }
         return "bikeShop.jsp";
     }

@@ -17,5 +17,4 @@ public interface UserService {
 
     void add(User user) throws ServiceException;
 
-    User findUserByOrderId(int orderId) throws ServiceException;
 }

@@ -98,7 +98,7 @@ float: left;
                         <td>${i}</td>
                     </c:when>
                     <c:otherwise>
-                        <td><a href="/controller?command=pagination&page=${i}">${i}</a></td>
+                        <td><a href="/controller?command=pagination&page=${i}&action=products">${i}</a></td>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>

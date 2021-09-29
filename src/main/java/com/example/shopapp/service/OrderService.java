@@ -2,6 +2,7 @@ package com.example.shopapp.service;
 
 import com.example.shopapp.entity.Cart;
 import com.example.shopapp.entity.Order;
+import com.example.shopapp.entity.Product;
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.ServiceException;
 
@@ -20,4 +21,6 @@ public interface OrderService {
     void setPaidState(int orderId, String stateName) throws ServiceException;
 
     void setCancelledState(int orderId, String stateName) throws ServiceException;
+
+    List<Order> getCurrentPageRecords(List<Order> totalList, int currentPageNo);
 }

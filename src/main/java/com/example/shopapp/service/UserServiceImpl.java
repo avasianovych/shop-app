@@ -90,14 +90,4 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("error while trying to add new user");
         }
     }
-
-    @Override
-    public User findUserByOrderId(int orderId) throws ServiceException {
-        try {
-            return userDao.findUserByOrderId(orderId);
-        } catch (DaoException e) {
-            LOGGER.log(Level.ERROR, e);
-            throw new ServiceException("an error occurred while trying to find user by order id");
-        }
-    }
 }

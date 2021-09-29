@@ -1,3 +1,5 @@
+package com.example.shopapp.command;
+
 import com.example.shopapp.command.ICommand;
 import com.example.shopapp.command.RemoveFromCartCommand;
 import com.example.shopapp.entity.Cart;
