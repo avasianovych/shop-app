@@ -1,8 +1,6 @@
 package com.example.shopapp.service;
 
 import com.example.shopapp.dao.CartDao;
-import com.example.shopapp.dao.ProductDao;
-import com.example.shopapp.dao.UserDao;
 import com.example.shopapp.entity.Cart;
 import com.example.shopapp.exception.DaoException;
 import com.example.shopapp.exception.ServiceException;
@@ -15,13 +13,10 @@ import java.util.List;
 public class CartServiceImpl implements CartService {
     private static final Logger LOGGER = LogManager.getLogger(CartServiceImpl.class);
     CartDao cartDao = CartDao.getInstance();
-    private static CartServiceImpl instance;
+    private static final CartService INSTANCE = new CartServiceImpl();
 
-    public static CartServiceImpl getInstance() {
-        if (instance == null) {
-            instance = new CartServiceImpl();
-        }
-        return instance;
+    public static CartService getInstance() {
+        return INSTANCE;
     }
 
     @Override

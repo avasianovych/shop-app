@@ -19,13 +19,6 @@
                 <button class="btn btn-secondary nav-link button-margin"><fmt:message key="header.ua"/></button>
             </form>
 
-<%--        <button class="navbar-toggler" type="button" data-toggle="collapse"--%>
-<%--                data-target="#navbarSupportedContent"--%>
-<%--                aria-controls="navbarSupportedContent" aria-expanded="false"--%>
-<%--                aria-label="Toggle navigation">--%>
-<%--            <span class="navbar-toggler-icon"></span>--%>
-<%--        </button>--%>
-<%--        <c:set var="authUser" value="user" scope="session"/>--%>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link text-white" href="bikeShop.jsp"><fmt:message key="header.main_button"/></a></li>

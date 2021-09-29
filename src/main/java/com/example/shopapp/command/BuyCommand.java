@@ -22,8 +22,6 @@ public class BuyCommand implements ICommand {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws CommandException {
-//        @SuppressWarnings("unchecked")
-//        List<User> user = (List<User>) req.getSession().getAttribute("user");
         User user = (User) req.getSession().getAttribute("user");
         @SuppressWarnings("unchecked")
         List<Cart> existCartList = (List<Cart>) req.getSession().getAttribute("fillCart");

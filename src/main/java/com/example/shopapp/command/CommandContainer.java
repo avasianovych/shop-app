@@ -15,7 +15,7 @@ public class CommandContainer {
         commands.put("getAllProducts", new FindAllProductsCommand());
         commands.put("addToCart", new AddToCartCommand());
         commands.put("quanityIncDec", new QuantityIncDecCommand());
-        commands.put("removeFromCart", new RemoveFromCart());
+        commands.put("removeFromCart", new RemoveFromCartCommand());
         commands.put("buy", new BuyCommand());
         commands.put("getOrderItems", new GetOrderItemsCommand());
         commands.put("addNewProduct", new AddNewProductCommand());
@@ -32,7 +32,7 @@ public class CommandContainer {
 
     }
 
-    public static ICommand getCommand(String commandName){
+    public static ICommand getCommand(String commandName) {
         return commands.get(commandName);
     }
 }

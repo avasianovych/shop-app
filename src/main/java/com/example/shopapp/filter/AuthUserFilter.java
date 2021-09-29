@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static java.util.Objects.nonNull;
 
-@WebFilter(urlPatterns = {"/orderItems.jsp","/account.jsp"})
+@WebFilter(urlPatterns = {"/orderItems.jsp", "/account.jsp"})
 public class AuthUserFilter extends HttpFilter {
 
     @Override

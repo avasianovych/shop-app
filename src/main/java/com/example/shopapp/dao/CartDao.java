@@ -2,7 +2,6 @@ package com.example.shopapp.dao;
 
 import com.example.shopapp.entity.Cart;
 import com.example.shopapp.exception.DaoException;
-import com.example.shopapp.exception.ServiceException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,14 +15,13 @@ import java.util.List;
 
 public class CartDao extends AbstractDao<Cart>{
     private static final Logger LOGGER = LogManager.getLogger(CartDao.class);
-    private static CartDao instance;
+    private static final CartDao INSTANCE = new CartDao();
 
     public static CartDao getInstance() {
-        if (instance == null) {
-            instance = new CartDao();
-        }
-        return instance;
+        return INSTANCE;
     }
+
+    private CartDao(){}
 
     public List<Cart> findCartProducts(List<Cart> cartList) throws DaoException {
         DBManager dbManager = DBManager.getInstance();

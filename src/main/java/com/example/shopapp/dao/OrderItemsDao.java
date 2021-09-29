@@ -1,6 +1,5 @@
 package com.example.shopapp.dao;
 
-import com.example.shopapp.command.LoginCommand;
 import com.example.shopapp.entity.Order;
 import com.example.shopapp.entity.OrderItems;
 import com.example.shopapp.entity.Product;
@@ -18,13 +17,13 @@ import java.util.List;
 
 public class OrderItemsDao {
     private static final Logger LOGGER = LogManager.getLogger(OrderItems.class);
-    private static OrderItemsDao instance;
+    private static final OrderItemsDao INSTANCE = new OrderItemsDao();
 
     public static OrderItemsDao getInstance() {
-        if (instance == null) {
-            instance = new OrderItemsDao();
-        }
-        return instance;
+        return INSTANCE;
+    }
+
+    private OrderItemsDao() {
     }
 
     public List<OrderItems> getOrderItemsByOrderId(int orderId) throws DaoException {

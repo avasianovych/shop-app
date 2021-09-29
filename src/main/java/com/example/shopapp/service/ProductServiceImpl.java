@@ -1,6 +1,5 @@
 package com.example.shopapp.service;
 
-
 import com.example.shopapp.dao.ProductDao;
 
 import com.example.shopapp.entity.Product;
@@ -16,13 +15,10 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     private static final Logger LOGGER = LogManager.getLogger(ProductServiceImpl.class);
     ProductDao productDao = ProductDao.getInstance();
-    private static ProductServiceImpl instance;
+    private static final ProductService INSTANCE = new ProductServiceImpl();
 
-    public static ProductServiceImpl getInstance() {
-        if (instance == null) {
-            instance = new ProductServiceImpl();
-        }
-        return instance;
+    public static ProductService getInstance() {
+        return INSTANCE;
     }
 
     public Product findById(int productId) throws ServiceException {
@@ -36,19 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void updateById(int id, String name, String description, String color, String price, String madeIn, String category) throws ServiceException {
-        if (!Validator.validateProductNameWithRegex(name)) {
-            throw new ServiceException("1");
-        } else if (!Validator.validateDescriptionWithRegex(description)) {
-            throw new ServiceException("2");
-        } else if (!Validator.validateProductColorWithRegex(color)) {
-            throw new ServiceException("3");
-        } else if (!Validator.validateProductPriceWithRegex(price)) {
-            throw new ServiceException("4");
-        } else if (!Validator.validateProductMadeInWithRegex(madeIn)) {
-            throw new ServiceException("5");
-        } else if (category == null) {
-            throw new ServiceException("6");
-        }
+        checkValidation(name, description, color, price, madeIn, category);
         try {
             productDao.updateById(id, name, description, color, price, madeIn, category);
         } catch (DaoException e) {
@@ -59,19 +43,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void add(String category, String name, String description, String madeIn, String color, String price) throws ServiceException {
-        if (!Validator.validateProductNameWithRegex(name)) {
-            throw new ServiceException("1");
-        } else if (!Validator.validateDescriptionWithRegex(description)) {
-            throw new ServiceException("2");
-        } else if (!Validator.validateProductColorWithRegex(color)) {
-            throw new ServiceException("3");
-        } else if (!Validator.validateProductPriceWithRegex(price)) {
-            throw new ServiceException("4");
-        } else if (!Validator.validateProductMadeInWithRegex(madeIn)) {
-            throw new ServiceException("5");
-        } else if (category == null) {
-            throw new ServiceException("6");
-        }
+        checkValidation(name, description, color, price, madeIn, category);
         try {
             productDao.add(category, name, description, madeIn, color, price);
         } catch (DaoException e) {
@@ -100,7 +72,6 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-
     @Override
     public List<Product> getCurrentPageRecords(List<Product> totalList, int currentPageNo) {
         if (totalList == null) {
@@ -109,6 +80,22 @@ public class ProductServiceImpl implements ProductService {
         int startIndex = (currentPageNo - 1) * 8;
         int endIndex = (startIndex + 8 > totalList.size() ? totalList.size() : startIndex + 8);
         return totalList.subList(startIndex, endIndex);
+    }
+
+    private void checkValidation(String name, String description, String color, String price, String madeIn, String category) throws ServiceException {
+        if (!Validator.validateProductNameWithRegex(name)) {
+            throw new ServiceException("1");
+        } else if (!Validator.validateDescriptionWithRegex(description)) {
+            throw new ServiceException("2");
+        } else if (!Validator.validateProductColorWithRegex(color)) {
+            throw new ServiceException("3");
+        } else if (!Validator.validateProductPriceWithRegex(price)) {
+            throw new ServiceException("4");
+        } else if (!Validator.validateProductMadeInWithRegex(madeIn)) {
+            throw new ServiceException("5");
+        } else if (category == null) {
+            throw new ServiceException("6");
+        }
     }
 }
 

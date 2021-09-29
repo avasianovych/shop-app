@@ -1,6 +1,7 @@
 package com.example.shopapp.command;
 
 import com.example.shopapp.entity.Category;
+import com.example.shopapp.entity.Order;
 import com.example.shopapp.entity.Product;
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.CommandException;
@@ -20,6 +21,7 @@ public class FindAllProductsCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(FindAllProductsCommand.class);
     ProductService productService = ProductServiceImpl.getInstance();
     CategoryService categoryService = CategoryServiceImpl.getInstance();
+    OrderService orderService = OrderServiceImpl.getInstance();
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws CommandException {
@@ -52,11 +54,17 @@ public class FindAllProductsCommand implements ICommand {
         } catch (ServiceException e) {
             LOGGER.log(Level.INFO, e);
         }
-        HttpSession session = req.getSession();
-        session.setAttribute("allColors", distinctColor);
-        session.setAttribute("allProducts", allProducts);
+        req.getSession().setAttribute("allColors", distinctColor);
+        req.getSession().setAttribute("allProducts", allProducts);
         if (user != null && user.getRole_id() == 1) {
             return "admin.jsp";
+        } else if (user != null && user.getRole_id() == 2) {
+            try {
+                List<Order> orderList = orderService.getUserOrders(user);
+                req.getSession().setAttribute("orderList", orderList);
+            } catch (ServiceException e) {
+                LOGGER.log(Level.ERROR, e);
+            }
         }
         return "bikeShop.jsp";
     }

@@ -1,6 +1,5 @@
 package com.example.shopapp.command;
 
-
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.CommandException;
 import com.example.shopapp.exception.ServiceException;
@@ -24,14 +23,14 @@ public class BlockUnblockUserCommand implements ICommand {
         String action = req.getParameter("action");
         try {
             userService.update(userId, action);
-        }catch (ServiceException e){
-            LOGGER.log(Level.ERROR,e);
+        } catch (ServiceException e) {
+            LOGGER.log(Level.ERROR, e);
             throw new CommandException("an error occurred while trying to change user state");
         }
         try {
             List<User> allUsersList = userService.findAll();
             req.getSession().setAttribute("allUsersList", allUsersList);
-        }catch (ServiceException e){
+        } catch (ServiceException e) {
             LOGGER.log(Level.INFO, e);
         }
         return "allUsers.jsp";

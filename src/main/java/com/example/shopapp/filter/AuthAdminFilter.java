@@ -1,7 +1,5 @@
 package com.example.shopapp.filter;
 
-import com.example.shopapp.entity.Role;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
@@ -11,7 +9,7 @@ import java.io.IOException;
 
 import static java.util.Objects.nonNull;
 
-@WebFilter(urlPatterns = { "/admin.jsp","/addProduct.jsp","/allOrders.jsp","/allUsers.jsp","/modifyProduct.jsp"})
+@WebFilter(urlPatterns = {"/admin.jsp", "/addProduct.jsp", "/allOrders.jsp", "/allUsers.jsp", "/modifyProduct.jsp"})
 public class AuthAdminFilter extends HttpFilter {
 
     @Override

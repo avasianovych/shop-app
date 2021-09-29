@@ -17,13 +17,13 @@ import java.util.List;
 public class OrderDao extends AbstractDao<Order> {
 
     private static final Logger LOGGER = LogManager.getLogger(OrderDao.class);
-    private static OrderDao instance;
+    private static final OrderDao INSTANCE = new OrderDao();
 
     public static OrderDao getInstance() {
-        if (instance == null) {
-            instance = new OrderDao();
-        }
-        return instance;
+        return INSTANCE;
+    }
+
+    private OrderDao() {
     }
 
     public void update(int orderId, String stateName) throws DaoException {

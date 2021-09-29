@@ -14,13 +14,13 @@ import java.sql.SQLException;
 
 public class RoleDao extends AbstractDao<Role> {
     private static final Logger LOGGER = LogManager.getLogger(RoleDao.class);
-    private static RoleDao instance;
+    private static final RoleDao INSTANCE = new RoleDao();
 
     public static RoleDao getInstance() {
-        if (instance == null) {
-            instance = new RoleDao();
-        }
-        return instance;
+        return INSTANCE;
+    }
+
+    private RoleDao() {
     }
 
     public String findByLogin(String login) throws DaoException {
@@ -40,8 +40,8 @@ public class RoleDao extends AbstractDao<Role> {
             LOGGER.log(Level.ERROR, e);
             throw new DaoException("an error occurred while trying to find role by login", e);
         } finally {
-                close(stmt);
-                close(rs);
+            close(stmt);
+            close(rs);
         }
         return role.getName();
     }

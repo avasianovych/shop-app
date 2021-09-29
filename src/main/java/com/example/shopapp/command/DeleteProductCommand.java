@@ -28,8 +28,6 @@ public class DeleteProductCommand implements ICommand {
             LOGGER.log(Level.ERROR, e);
             throw new CommandException("an error occurred while trying to delete product", e);
         }
-//        List<Product> allProducts = productService.findAll();
-//        req.getSession().setAttribute("allProducts", allProducts);
         return "index.jsp";
     }
 }

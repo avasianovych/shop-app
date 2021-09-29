@@ -42,7 +42,7 @@ public class LoginCommand implements ICommand {
             try {
                 role = roleService.findByLogin(login);
                 req.getSession().setAttribute("role", role);
-            }catch (ServiceException e){
+            } catch (ServiceException e) {
                 LOGGER.log(Level.ERROR, e);
                 throw new CommandException("an error occurred while trying to log you in");
             }

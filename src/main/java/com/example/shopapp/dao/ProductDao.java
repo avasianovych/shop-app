@@ -13,14 +13,13 @@ import java.util.List;
 
 public class ProductDao extends AbstractDao<Product> {
     private static final Logger LOGGER = LogManager.getLogger(ProductDao.class);
-    private static ProductDao instance;
+    private static final ProductDao INSTANCE = new ProductDao();
 
     public static ProductDao getInstance() {
-        if (instance == null) {
-            instance = new ProductDao();
-        }
-        return instance;
+        return INSTANCE;
     }
+
+    private ProductDao(){}
 
     public void delete(int productId) throws DaoException {
         DBManager dbManager = DBManager.getInstance();
@@ -68,7 +67,7 @@ public class ProductDao extends AbstractDao<Product> {
             stmt.setString(5, madeIn);
             stmt.setString(6, category);
             stmt.setInt(7, id);
-            int row = stmt.executeUpdate();
+            stmt.executeUpdate();
         } catch (SQLException e) {
             LOGGER.log(Level.ERROR, e);
             throw new DaoException("error while trying to update information about product", e);

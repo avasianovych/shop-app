@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LogoutCommand implements ICommand{
+public class LogoutCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
         HttpSession session = req.getSession();
@@ -12,6 +12,10 @@ public class LogoutCommand implements ICommand{
         session.removeAttribute("fillCart");
         session.removeAttribute("totalPrice");
         session.removeAttribute("role");
+        session.removeAttribute("loginError");
+        session.removeAttribute("registrationError");
+        session.removeAttribute("errorModifyProduct");
+        session.removeAttribute("errorAddNewProduct");
         return "bikeShop.jsp";
     }
 }

@@ -8,9 +8,10 @@ public class EncodingFilter implements Filter {
     private String code;
 
     @Override
-    public void init(FilterConfig fConfig) throws ServletException {
+    public void init(FilterConfig fConfig) {
         code = fConfig.getInitParameter("encoding");
     }
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         servletRequest.setCharacterEncoding(code);
@@ -18,6 +19,7 @@ public class EncodingFilter implements Filter {
         servletResponse.setCharacterEncoding(code);
         filterChain.doFilter(servletRequest, servletResponse);
     }
+
     @Override
     public void destroy() {
         code = null;

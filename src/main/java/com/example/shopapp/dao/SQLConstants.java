@@ -5,7 +5,7 @@ public class SQLConstants {
     private SQLConstants() {
     }
 
-    public static final String FIND_USER_BY_ORDER_ID="select us.id, us.name, us.surname, us.role_id, us.login from bikeshopdb.user us left join bikeshopdb.order od on od.user_id = us.id where od.id=?;";
+    public static final String FIND_USER_BY_ORDER_ID = "select us.id, us.name, us.surname, us.role_id, us.login from bikeshopdb.user us left join bikeshopdb.order od on od.user_id = us.id where od.id=?;";
     public static final String ADD_NEW_USER = "insert into bikeshopdb.user (name , surname, role_id, login, password, isBlock) values (?, ?, (select role.id from bikeshopdb.role where role.name='user'), ?, ?, '0')";
     public static final String UNBLOCK_USER = "update user set isBlock='0' where id=?";
     public static final String BLOCK_USER = "update user set isBlock='1' where id=?";

@@ -1,6 +1,5 @@
 package com.example.shopapp.service;
 
-import com.example.shopapp.entity.Order;
 import com.example.shopapp.entity.OrderItems;
 import com.example.shopapp.exception.ServiceException;
 

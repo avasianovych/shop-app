@@ -23,8 +23,6 @@ public class GetOrderItemsCommand implements ICommand {
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws CommandException {
         HttpSession session = req.getSession();
         int orderId = Integer.parseInt(req.getParameter("id"));
-//        @SuppressWarnings("unchecked")
-//        List<User> user = (List<User>) session.getAttribute("user");
         User user = (User) session.getAttribute("user");
         if (user != null) {
             try {

@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -54,14 +55,15 @@ public class ChangeOrderStateCommand implements ICommand {
             } catch (ServiceException e) {
                 LOGGER.log(Level.INFO, e);
             }
-            try {
-                User user = userService.findUserByOrderId(orderId);
-                List<Order> newOrderList = orderService.getUserOrders(user);
-                req.getSession().removeAttribute("orderL");
-                req.getSession().setAttribute("orderList", newOrderList);
-            } catch (ServiceException e) {
-                LOGGER.log(Level.ERROR, e);
-            }
+//            try {
+//                User user = userService.findUserByOrderId(orderId);
+//                List<Order> newOrderList = orderService.getUserOrders(user);
+//                req.getSession().removeAttribute("orderList");
+//                ServletContext context = req.getSession().getServletContext();
+//                context.setAttribute("orderList", newOrderList);
+//            } catch (ServiceException e) {
+//                LOGGER.log(Level.ERROR, e);
+//            }
         }
         return "allOrders.jsp";
     }

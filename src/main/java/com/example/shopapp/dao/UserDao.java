@@ -15,13 +15,14 @@ import java.util.List;
 
 public class UserDao extends AbstractDao<User> {
     private static final Logger LOGGER = LogManager.getLogger(UserDao.class);
-    private static UserDao instance;
+    private static final UserDao INSTANCE = new UserDao();
 
     public static UserDao getInstance() {
-        if (instance == null) {
-            instance = new UserDao();
-        }
-        return instance;
+        return INSTANCE;
+
+    }
+
+    private UserDao() {
     }
 
     public void add(User user) throws DaoException {
@@ -64,7 +65,7 @@ public class UserDao extends AbstractDao<User> {
             close(stmt);
             close(rs);
         }
-                return user;
+        return user;
     }
 
     public void update(int userId, String query) throws DaoException {
@@ -118,7 +119,7 @@ public class UserDao extends AbstractDao<User> {
                 isExist = true;
             }
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR,e);
+            LOGGER.log(Level.ERROR, e);
             throw new DaoException("error while trying to find exist login", e);
         } finally {
             close(rs);
@@ -130,21 +131,21 @@ public class UserDao extends AbstractDao<User> {
         DBManager dbManager = DBManager.getInstance();
         ResultSet rs = null;
         User user = new User();
-        try(Connection connection = dbManager.getConnection();
-        PreparedStatement stmt = connection.prepareStatement(SQLConstants.FIND_USER_BY_ORDER_ID)){
+        try (Connection connection = dbManager.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(SQLConstants.FIND_USER_BY_ORDER_ID)) {
             stmt.setInt(1, orderId);
             rs = stmt.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setName(rs.getString("surname"));
                 user.setRole_id(rs.getInt("role_id"));
                 user.setLogin(rs.getString("login"));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             LOGGER.log(Level.ERROR, e);
             throw new DaoException("an error occurred while trying to find user by order id", e);
-        }finally {
+        } finally {
             close(rs);
         }
         return user;

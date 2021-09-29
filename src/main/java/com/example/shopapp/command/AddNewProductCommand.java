@@ -28,12 +28,10 @@ public class AddNewProductCommand implements ICommand {
         try {
             productService.add(categoryName, productName, productDescription, productMadeIn, productColor, productPrice);
             req.getSession().setAttribute("errorAddNewProduct", "7");
-        }catch (ServiceException e){
+        } catch (ServiceException e) {
             LOGGER.log(Level.ERROR, e);
             req.getSession().setAttribute("errorAddNewProduct", e.getMessage());
         }
-//        List<Product> allProducts = productService.findAll();
-//        req.getSession().setAttribute("allProducts", allProducts);
         return "addProduct.jsp";
     }
 }

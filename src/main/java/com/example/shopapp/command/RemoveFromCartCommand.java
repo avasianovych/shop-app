@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 
 
-public class RemoveFromCart implements ICommand {
+public class RemoveFromCartCommand implements ICommand {
     CartService cartService = CartServiceImpl.getInstance();
 
     @Override
@@ -26,7 +26,7 @@ public class RemoveFromCart implements ICommand {
             totalPrice = cartService.getTotalPrice(existCartList);
             req.getSession().setAttribute("totalPrice", totalPrice);
         }
-        if(existCartList != null && existCartList.size() == 0){
+        if (existCartList != null && existCartList.size() == 0) {
             req.getSession().removeAttribute("fillCart");
         }
         return "cart.jsp";

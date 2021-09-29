@@ -1,6 +1,5 @@
 package com.example.shopapp.dao;
 
-import com.example.shopapp.command.LoginCommand;
 import com.example.shopapp.entity.Entity;
 import com.example.shopapp.exception.DaoException;
 import org.apache.logging.log4j.Level;

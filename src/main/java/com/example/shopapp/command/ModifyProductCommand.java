@@ -31,12 +31,10 @@ public class ModifyProductCommand implements ICommand {
             req.getSession().setAttribute("errorModifyProduct", "7");
             Product product = productService.findById(productId);
             req.getSession().setAttribute("product", product);
-        }catch (ServiceException e) {
+        } catch (ServiceException e) {
             LOGGER.log(Level.INFO, e);
             req.getSession().setAttribute("errorModifyProduct", e.getMessage());
         }
-//        List<Product> allProducts = productService.findAll();
-//        req.getSession().setAttribute("allProducts", allProducts);
         return "modifyProduct.jsp";
     }
 }

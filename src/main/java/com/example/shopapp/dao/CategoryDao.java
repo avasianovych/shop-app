@@ -1,6 +1,5 @@
 package com.example.shopapp.dao;
 
-import com.example.shopapp.command.LoginCommand;
 import com.example.shopapp.entity.Category;
 import com.example.shopapp.exception.DaoException;
 import org.apache.logging.log4j.Level;
@@ -17,37 +16,13 @@ import java.util.List;
 public class CategoryDao extends AbstractDao<Category> {
 
     private static final Logger LOGGER = LogManager.getLogger(CategoryDao.class);
-
-    private static CategoryDao instance;
+    private static final CategoryDao INSTANCE = new CategoryDao();
 
     public static CategoryDao getInstance() {
-        if (instance == null) {
-            instance = new CategoryDao();
-        }
-        return instance;
+        return INSTANCE;
     }
 
-//    int findByName(String categoryName){
-//        DBManager dbManager = DBManager.getInstance();
-//        PreparedStatement stmt = null;
-//        ResultSet rs = null;
-//        Category category = new Category();
-//        try(Connection connection = dbManager.getConnection()){
-//            stmt = connection.prepareStatement(SQLConstants.FIND_CATEGORY_ID_BY_NAME);
-//            stmt.setString(1,categoryName);
-//            rs = stmt.executeQuery();
-//            while (rs.next()){
-//                category.setId(rs.getInt("id"));
-//                category.setName(rs.getString("name"));
-//            }
-//        }catch(SQLException e){
-//            e.printStackTrace();
-//        } finally {
-//                close(stmt);
-//                close(rs);
-//        }
-//        return category.getId();
-//    }
+    private CategoryDao(){}
 
     public List<Category> findAll() throws DaoException {
         DBManager dbManager = DBManager.getInstance();

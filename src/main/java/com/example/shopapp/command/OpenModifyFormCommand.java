@@ -23,7 +23,7 @@ public class OpenModifyFormCommand implements ICommand {
         try {
             Product product = productService.findById(productId);
             req.getSession().setAttribute("product", product);
-        }catch (ServiceException e){
+        } catch (ServiceException e) {
             LOGGER.log(Level.ERROR, e);
             throw new CommandException("an error occurred while trying to modify product");
         }

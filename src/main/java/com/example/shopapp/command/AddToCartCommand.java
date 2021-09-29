@@ -24,8 +24,6 @@ public class AddToCartCommand implements ICommand {
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws CommandException {
         List<Cart> newCartList = new ArrayList<>();
         int totalPrice;
-//        @SuppressWarnings("unchecked")
-//        List<User> listUser = (List<User>) req.getSession().getAttribute("user");
         int id = Integer.parseInt(req.getParameter("id"));
         Cart cart = new Cart();
         cart.setId(id);
@@ -34,20 +32,7 @@ public class AddToCartCommand implements ICommand {
 
         @SuppressWarnings("unchecked")
         ArrayList<Cart> existCartList = (ArrayList<Cart>) session.getAttribute("fillCart");
-        if (existCartList == null) {
-            newCartList.add(cart);
-            List<Cart> fillCart;
-            try {
-                fillCart = cartService.findCartProducts(newCartList);
-            }catch (ServiceException e){
-                LOGGER.log(Level.ERROR, e);
-                throw new CommandException("an error happened while trying to add product to the cart");
-            }
-            totalPrice = cartService.getTotalPrice(fillCart);
-            session.setAttribute("cart-list", newCartList);
-            session.setAttribute("fillCart", fillCart);
-            session.setAttribute("totalPrice", totalPrice);
-        } else {
+        if (existCartList != null) {
             newCartList = existCartList;
             for (Cart c : existCartList) {
                 if (c.getId() == id) {
@@ -55,19 +40,25 @@ public class AddToCartCommand implements ICommand {
                     return "cart.jsp";
                 }
             }
-            newCartList.add(cart);
-            List<Cart> fillCart;
-            try {
-                fillCart = cartService.findCartProducts(newCartList);
-            }catch (ServiceException e){
-                LOGGER.log(Level.ERROR, e);
-                throw new CommandException("an error happened while trying to add product to the cart");
-            }
-            totalPrice = cartService.getTotalPrice(fillCart);
-            session.setAttribute("cart-list", newCartList);
-            session.setAttribute("fillCart", fillCart);
-            session.setAttribute("totalPrice", totalPrice);
         }
-            return "bikeShop.jsp";
+        totalPrice = fillCartAndGetTotalPrice(newCartList, cart, session);
+        session.setAttribute("totalPrice", totalPrice);
+        return "bikeShop.jsp";
+    }
+
+    private int fillCartAndGetTotalPrice(List<Cart> newCartList, Cart cart, HttpSession session) throws CommandException {
+        int totalPrice;
+        newCartList.add(cart);
+        List<Cart> fillCart;
+        try {
+            fillCart = cartService.findCartProducts(newCartList);
+        }catch (ServiceException e){
+            LOGGER.log(Level.ERROR, e);
+            throw new CommandException("an error happened while trying to add product to the cart");
+        }
+        totalPrice = cartService.getTotalPrice(fillCart);
+        session.setAttribute("cart-list", newCartList);
+        session.setAttribute("fillCart", fillCart);
+        return totalPrice;
     }
 }

@@ -31,36 +31,30 @@ public class SortProductsCommand implements ICommand {
                     .sorted(Comparator.comparing(Product::getName)).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", sortingNameAZ);
             currentPageRecords = productService.getCurrentPageRecords(sortingNameAZ, 1);
-
-
         }
         if (sortBy.equals("nameZA")) {
             List<Product> sortingNameZA = products.stream()
                     .sorted(Comparator.comparing(Product::getName).reversed()).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", sortingNameZA);
             currentPageRecords = productService.getCurrentPageRecords(sortingNameZA, 1);
-
         }
         if (sortBy.equals("priceL2H")) {
             List<Product> sortingPriceLowToHigh = products.stream()
                     .sorted(Comparator.comparingInt(Product::getPrice)).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", sortingPriceLowToHigh);
             currentPageRecords = productService.getCurrentPageRecords(sortingPriceLowToHigh, 1);
-
         }
         if (sortBy.equals("priceH2L")) {
             List<Product> sortingPriceHighToLow = products.stream()
                     .sorted((o1, o2) -> o2.getPrice() - o1.getPrice()).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", sortingPriceHighToLow);
             currentPageRecords = productService.getCurrentPageRecords(sortingPriceHighToLow, 1);
-
         }
         if (sortBy.equals("NewOld")) {
             List<Product> sortingNewestToOldest = products.stream()
                     .sorted(Comparator.comparing(Product::getTimestamp).reversed()).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", sortingNewestToOldest);
             currentPageRecords = productService.getCurrentPageRecords(sortingNewestToOldest, 1);
-
         }
 
         req.getSession().setAttribute("currentPage", page);

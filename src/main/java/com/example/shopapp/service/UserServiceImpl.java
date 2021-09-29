@@ -16,13 +16,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
     private final UserDao userDao = UserDao.getInstance();
-    private static UserServiceImpl instance;
+    private static final UserService INSTANCE = new UserServiceImpl();
 
-    public static UserServiceImpl getInstance() {
-        if (instance == null) {
-            instance = new UserServiceImpl();
-        }
-        return instance;
+    public static UserService getInstance() {
+        return INSTANCE;
     }
 
     @Override
@@ -36,7 +33,6 @@ public class UserServiceImpl implements UserService {
         }
         return user;
     }
-
 
     @Override
     public boolean isLoginExist(String login) throws ServiceException {
@@ -56,15 +52,15 @@ public class UserServiceImpl implements UserService {
         if (action.equals("block")) {
             try {
                 userDao.update(userId, SQLQueryMapper.BLOCK_USER);
-            }catch (DaoException e){
+            } catch (DaoException e) {
                 LOGGER.log(Level.ERROR, e);
                 throw new ServiceException("an error occurred while trying to block user ", e);
             }
         } else if (action.equals("unblock")) {
             try {
                 userDao.update(userId, SQLQueryMapper.UNBLOCK_USER);
-            }catch (DaoException e){
-                LOGGER.log(Level.ERROR,e);
+            } catch (DaoException e) {
+                LOGGER.log(Level.ERROR, e);
                 throw new ServiceException("an error occurred while trying to unblock user", e);
             }
         }
@@ -97,9 +93,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByOrderId(int orderId) throws ServiceException {
-        try{
+        try {
             return userDao.findUserByOrderId(orderId);
-        }catch (DaoException e){
+        } catch (DaoException e) {
             LOGGER.log(Level.ERROR, e);
             throw new ServiceException("an error occurred while trying to find user by order id");
         }
