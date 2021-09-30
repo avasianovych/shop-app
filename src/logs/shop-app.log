@@ -162,3 +162,7 @@ com.example.shopapp.exception.ServiceException: 1
 2021-09-30 01:40:59 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
 2021-09-30 01:40:59 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
 2021-09-30 02:23:35 [http-nio-8080-exec-6] ERROR com.example.shopapp.command.AddNewProductCommand - com.example.shopapp.exception.ServiceException: 1
+2021-09-30 02:37:07 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 1
+2021-09-30 11:09:43 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-09-30 11:09:43 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-09-30 11:09:43 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""

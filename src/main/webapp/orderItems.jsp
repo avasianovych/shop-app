@@ -9,17 +9,17 @@
 <body>
 <%@include file="/includes/navbar.jsp"%>
 <div class="container my-3">
-  <div class="d-flex py-3"><h3>Order №${orderId}</h3></div>
+  <div class="d-flex py-3"><h3><fmt:message key="orderItems.order"/>${orderId}</h3></div>
 
   <table class="table table-light">
     <thead>
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Color</th>
-      <th scope="col">Made in</th>
-      <th scope="col">Description</th>
-      <th scope="col">Quantity</th>
+      <th scope="col"><fmt:message key="orderItems.name"/></th>
+      <th scope="col"><fmt:message key="orderItems.price"/></th>
+      <th scope="col"><fmt:message key="orderItems.color"/></th>
+      <th scope="col"><fmt:message key="orderItems.madeIn"/></th>
+      <th scope="col"><fmt:message key="orderItems.description"/></th>
+      <th scope="col"><fmt:message key="orderItems.quantity"/></th>
     </tr>
     </thead>
     <tbody>

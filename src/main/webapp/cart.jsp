@@ -10,15 +10,15 @@
 <%@include file="/includes/navbar.jsp"%>
 
 <div class="container my-3">
-    <div class="d-flex py-3"><h3>Total Price: $${totalPrice > 0?totalPrice:0}</h3><c:if test="${sessionScope.fillCart != null}"> <form action="controller" method="post"><button type="submit" name="command" value="buy" class="mx-3 btn btn-primary">Buy</button></form></c:if></div>
+    <div class="d-flex py-3"><h3><fmt:message key="cart.totalPrice"/>: $${totalPrice > 0?totalPrice:0}</h3><c:if test="${sessionScope.fillCart != null}"> <form action="controller" method="post"><button type="submit" name="command" value="buy" class="mx-3 btn btn-primary"><fmt:message key="button.buy"/></button></form></c:if></div>
     <table class="table table-light">
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Cancel</th>
+            <th scope="col"><fmt:message key="cart.name"/></th>
+            <th scope="col"><fmt:message key="cart.description"/></th>
+            <th scope="col"><fmt:message key="cart.price"/></th>
+            <th scope="col"><fmt:message key="cart.quantity"/></th>
+            <th scope="col"><fmt:message key="cart.cancel"/></th>
         </tr>
         </thead>
         <tbody>
@@ -42,7 +42,7 @@
                 <form action="controller" method="post">
                     <input name="command" type="hidden" value="removeFromCart">
                     <input name="id" type="hidden" value="${cart.id}">
-                <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                <button type="submit" class="btn btn-sm btn-danger"><fmt:message key="button.remove"/></button>
                 </form>
             </td>
         </tr>

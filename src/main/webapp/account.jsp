@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
     <title>My account</title>
@@ -8,15 +9,15 @@
 <body>
 <%@include file="/includes/navbar.jsp"%>
 <div class="container my-3 w-80">
-    <div class="d-flex py-3"><h3>My orders</h3></div>
+    <div class="d-flex py-3"><h3><fmt:message key="allOrders.order"/></h3></div>
 
     <table class="table table-light">
         <thead>
         <tr>
-            <th scope="col">Order №</th>
-            <th scope="col">Total price</th>
-            <th scope="col">State</th>
-            <th scope="col">Creation date</th>
+            <th scope="col"><fmt:message key="allOrders.orderNumber"/></th>
+            <th scope="col"><fmt:message key="allOrders.totalPrice"/></th>
+            <th scope="col"><fmt:message key="allOrders.state"/></th>
+            <th scope="col"><fmt:message key="allOrders.date"/></th>
         </tr>
         </thead>
         <tbody>

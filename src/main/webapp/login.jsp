@@ -24,24 +24,24 @@
         </c:when>
     </c:choose></h4>
     <div class="card w-50 mx-auto my-5">
-        <div class="card-header text-center">Sign in</div>
+        <div class="card-header text-center"><fmt:message key="login.signIn"/></div>
         <div class="card-body">
             <form action="controller" method="post">
                 <input name="command" type="hidden" value="login">
                 <div class="form-group">
-                    <label>Login</label>
-                    <input type="email" name="login" value="" class="form-control" placeholder="Enter login">
+                    <label><fmt:message key="login.login"/></label>
+                    <input type="email" name="login" value="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" value="" class="form-control" placeholder="Password">
+                    <label><fmt:message key="login.password"/></label>
+                    <input type="password" name="password" value="" class="form-control">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success"><fmt:message key="bikeShop.submit"/></button>
                 </div>
             </form>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-primary" href="registration.jsp">New around here? Sign up</a>
+            <a class="dropdown-item text-primary" href="registration.jsp"><fmt:message key="login.registration"/></a>
         </div>
         </div>
     </div>

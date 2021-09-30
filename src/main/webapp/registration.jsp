@@ -29,34 +29,34 @@
                 <div class="col-10 col-md-8 col-lg-6 col-xl-5">
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-body p-3">
-                            <h2 class="text-uppercase text-center mb-2">Create an account</h2>
+                            <h2 class="text-uppercase text-center mb-2"><fmt:message key="registration.create"/></h2>
 
                             <form action="controller" method="post">
 <input type="hidden" name="command" value="registration">
                                 <div class="form-outline mb-2">
                                     <input type="text" name="name" value="" class="form-control form-control-lg" />
-                                    <label class="form-label" >Your Name</label>
+                                    <label class="form-label" ><fmt:message key="registration.name"/></label>
                                 </div>
                                 <div class="form-outline mb-2">
                                     <input type="text" name="surname" value="" class="form-control form-control-lg" />
-                                    <label class="form-label" >Your Surname</label>
+                                    <label class="form-label" ><fmt:message key="registration.surname"/></label>
                                 </div>
 
                                 <div class="form-outline mb-2">
                                     <input type="email" name="login" value="" class="form-control form-control-lg" />
-                                    <label class="form-label" >Your Email/Login</label>
+                                    <label class="form-label" ><fmt:message key="registration.login"/></label>
                                 </div>
 
                                 <div class="form-outline mb-2">
                                     <input type="password" name="password" value="" class="form-control form-control-lg" />
-                                    <label class="form-label" >Password</label>
+                                    <label class="form-label" ><fmt:message key="registration.password"/></label>
                                 </div>
 
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><fmt:message key="button.register"/></button>
                                 </div>
 
-                                <p class="text-center text-muted mt-2 mb-0">Have already an account? <a href="login.jsp" class="fw-bold text-body"><u>Login here</u></a></p>
+                                <p class="text-center text-muted mt-2 mb-0"><fmt:message key="registration.link1"/> <a href="login.jsp" class="fw-bold text-body"><u><fmt:message key="registration.link2"/></u></a></p>
 
                             </form>
 
