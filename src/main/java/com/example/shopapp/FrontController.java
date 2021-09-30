@@ -18,19 +18,16 @@ public class FrontController extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(FrontController.class);
 
     public void init() {
-
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String forward = handleRequest(request, response);
         request.getRequestDispatcher(forward).forward(request, response);
-        System.out.println("doGet");
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String redirect = handleRequest(request, response);
         response.sendRedirect(redirect);
-        System.out.println("doPost");
     }
 
     public void destroy() {
