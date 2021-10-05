@@ -13,20 +13,24 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 public class ChangeOrderStateCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(ChangeOrderStateCommand.class);
     OrderService orderService = OrderServiceImpl.getInstance();
-    UserService userService = UserServiceImpl.getInstance();
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws CommandException {
         int orderId = Integer.parseInt(req.getParameter("id"));
         String currentState;
         String futureState = req.getParameter("state");
+        int page = 1;
+        int recordsPerPage = 5;
+        List<Order> allOrdersList = null;
         try {
             currentState = orderService.findOrderStateById(orderId);
         } catch (ServiceException e) {
@@ -50,20 +54,19 @@ public class ChangeOrderStateCommand implements ICommand {
                 }
             }
             try {
-                List<Order> allOrdersList = orderService.findAll();
+                allOrdersList = orderService.findAll();
                 req.getSession().setAttribute("allOrdersList", allOrdersList);
             } catch (ServiceException e) {
                 LOGGER.log(Level.INFO, e);
             }
-//            try {
-//                User user = userService.findUserByOrderId(orderId);
-//                List<Order> newOrderList = orderService.getUserOrders(user);
-//                req.getSession().removeAttribute("orderList");
-//                ServletContext context = req.getSession().getServletContext();
-//                context.setAttribute("orderList", newOrderList);
-//            } catch (ServiceException e) {
-//                LOGGER.log(Level.ERROR, e);
-//            }
+            if (allOrdersList != null) {
+                int noOfRecords = allOrdersList.size();
+                int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+                List<Order> paginationOrders = orderService.getCurrentPageRecords(allOrdersList, page);
+                req.getSession().setAttribute("noOfPagesOrders", noOfPages);
+                req.getSession().setAttribute("currentPageOrders", page);
+                req.getSession().setAttribute("currentPageRecordsOrders", paginationOrders);
+            }
         }
         return "allOrders.jsp";
     }

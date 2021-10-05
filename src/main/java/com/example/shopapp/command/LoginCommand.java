@@ -1,5 +1,6 @@
 package com.example.shopapp.command;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.CommandException;
 import com.example.shopapp.exception.ServiceException;
@@ -34,7 +35,7 @@ public class LoginCommand implements ICommand {
         } else if (user != null && user.isBlock()) {
             req.getSession().setAttribute("loginError", "2");
             return "login.jsp";
-        } else if (user != null && password.equals(user.getPassword())) {
+        } else if (user != null && BCrypt.verifyer().verify(password.toCharArray(), user.getPassword()).verified) {
             try {
                 role = roleService.findByLogin(login);
                 req.getSession().setAttribute("role", role);

@@ -1,5 +1,6 @@
 package com.example.shopapp.service;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.shopapp.dao.SQLQueryMapper;
 import com.example.shopapp.dao.UserDao;
 import com.example.shopapp.entity.User;
@@ -84,6 +85,7 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException("2");
         }
         try {
+            user.setPassword(BCrypt.withDefaults().hashToString(12, user.getPassword().toCharArray()));
             userDao.add(user);
         } catch (DaoException e) {
             e.printStackTrace();
