@@ -1,173 +1,86 @@
-2021-09-23 01:20:23 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.RegistrationCommand - an error occurred during registration
-com.example.shopapp.exception.ServiceException: 2
-	at com.example.shopapp.service.UserServiceImpl.add(UserServiceImpl.java:76) ~[classes/:?]
-	at com.example.shopapp.command.RegistrationCommand.execute(RegistrationCommand.java:36) [classes/:?]
-	at com.example.shopapp.FrontController.handleRequest(FrontController.java:40) [classes/:?]
-	at com.example.shopapp.FrontController.doPost(FrontController.java:30) [classes/:?]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) [servlet-api.jar:4.0.FR]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) [servlet-api.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-websocket.jar:9.0.52]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
-	at com.example.shopapp.filter.EncodingFilter.doFilter(EncodingFilter.java:19) [classes/:?]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [catalina.jar:9.0.52]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [catalina.jar:9.0.52]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [catalina.jar:9.0.52]
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:687) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [catalina.jar:9.0.52]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) [catalina.jar:9.0.52]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) [tomcat-coyote.jar:9.0.52]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-coyote.jar:9.0.52]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) [tomcat-coyote.jar:9.0.52]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) [tomcat-coyote.jar:9.0.52]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-coyote.jar:9.0.52]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-util.jar:9.0.52]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.52]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-util.jar:9.0.52]
-	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_291]
-2021-09-23 01:24:13 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.RegistrationCommand - an error occurred during registration
-com.example.shopapp.exception.ServiceException: 1
-	at com.example.shopapp.service.UserServiceImpl.add(UserServiceImpl.java:74) ~[classes/:?]
-	at com.example.shopapp.command.RegistrationCommand.execute(RegistrationCommand.java:36) [classes/:?]
-	at com.example.shopapp.FrontController.handleRequest(FrontController.java:40) [classes/:?]
-	at com.example.shopapp.FrontController.doPost(FrontController.java:30) [classes/:?]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) [servlet-api.jar:4.0.FR]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) [servlet-api.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-websocket.jar:9.0.52]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
-	at com.example.shopapp.filter.EncodingFilter.doFilter(EncodingFilter.java:19) [classes/:?]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [catalina.jar:9.0.52]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [catalina.jar:9.0.52]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [catalina.jar:9.0.52]
-	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:687) [catalina.jar:9.0.52]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [catalina.jar:9.0.52]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) [catalina.jar:9.0.52]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) [tomcat-coyote.jar:9.0.52]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-coyote.jar:9.0.52]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) [tomcat-coyote.jar:9.0.52]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) [tomcat-coyote.jar:9.0.52]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-coyote.jar:9.0.52]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-util.jar:9.0.52]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.52]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-util.jar:9.0.52]
-	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_291]
-2021-09-23 01:33:59 [http-nio-8080-exec-1] ERROR com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 1
-2021-09-23 01:34:44 [http-nio-8080-exec-5] ERROR com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 2
-2021-09-23 01:36:47 [http-nio-8080-exec-9] WARN  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 1
-2021-09-23 01:37:58 [http-nio-8080-exec-9] ALL   com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 2
-2021-09-23 01:39:24 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 3
-2021-09-23 11:27:00 [http-nio-8080-exec-5] ERROR com.example.shopapp.command.LoginCommand - com.example.shopapp.exception.ServiceException: error while trying to find user by login
-2021-09-23 11:27:00 [http-nio-8080-exec-5] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to log you in
-2021-09-23 11:28:29 [http-nio-8080-exec-5] ERROR com.example.shopapp.command.LoginCommand - com.example.shopapp.exception.ServiceException: error while trying to find user by login
-2021-09-23 11:28:29 [http-nio-8080-exec-5] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to log you in
-2021-09-23 11:31:53 [http-nio-8080-exec-5] ERROR com.example.shopapp.command.LoginCommand - com.example.shopapp.exception.ServiceException: error while trying to find user by login
-2021-09-23 11:31:53 [http-nio-8080-exec-5] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to log you in
-2021-09-23 11:34:07 [http-nio-8080-exec-8] ERROR com.example.shopapp.command.LoginCommand - com.example.shopapp.exception.ServiceException: error while trying to find user by login
-2021-09-23 11:34:07 [http-nio-8080-exec-8] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to log you in
-2021-09-23 12:06:22 [http-nio-8080-exec-6] ERROR com.example.shopapp.command.LoginCommand - com.example.shopapp.exception.ServiceException: error while trying to find user by login
-2021-09-23 12:06:22 [http-nio-8080-exec-6] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to log you in
-2021-09-23 12:08:17 [http-nio-8080-exec-5] ERROR com.example.shopapp.command.LoginCommand - com.example.shopapp.exception.ServiceException: error while trying to find user by login
-2021-09-23 12:08:17 [http-nio-8080-exec-5] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to log you in
-2021-09-23 15:54:11 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 15:54:11 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 15:54:16 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-23 15:54:16 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 15:54:16 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 15:54:23 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-23 15:54:23 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 19:46:14 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 19:46:14 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 20:08:57 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 20:08:57 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 20:09:04 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-23 20:09:04 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 20:09:04 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 20:09:11 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-23 20:09:20 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-23 20:09:21 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-23 20:12:22 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-23 20:12:22 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 20:12:22 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-23 20:13:40 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 1
-2021-09-23 20:13:49 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 2
-2021-09-27 18:47:37 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 1
-2021-09-28 12:00:05 [main] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-28 12:00:05 [main] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-28 12:00:05 [main] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-28 12:17:19 [main] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-28 12:17:19 [main] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-28 12:17:19 [main] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-28 13:10:30 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 13:11:14 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 14:43:47 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 14:44:30 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 15:25:52 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 15:28:56 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 16:18:02 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 17:24:00 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 17:25:10 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 17:27:34 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 17:27:47 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 17:28:30 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 17:34:09 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 17:35:46 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 17:40:24 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-28 17:41:37 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-29 11:38:31 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-29 11:45:34 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-29 12:17:48 [main] INFO  com.example.shopapp.dao.DBManager - javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
-2021-09-29 13:19:24 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 13:19:24 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 13:19:29 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-29 13:19:29 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 13:19:29 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 13:19:36 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-29 13:19:36 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:19:46 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-29 22:19:46 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:19:46 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:20:02 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-29 22:20:02 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:20:06 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-29 22:20:06 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:20:14 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:20:14 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:20:45 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-29 22:20:45 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:23:31 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-29 22:23:31 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:23:31 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:23:39 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-29 22:23:39 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-30 00:13:17 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-30 00:13:17 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-30 00:13:19 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-30 00:13:19 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-30 00:13:20 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-30 00:13:20 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-30 01:40:59 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-30 01:40:59 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-30 01:40:59 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-30 02:23:35 [http-nio-8080-exec-6] ERROR com.example.shopapp.command.AddNewProductCommand - com.example.shopapp.exception.ServiceException: 1
-2021-09-30 02:37:07 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 1
-2021-09-30 11:09:43 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-30 11:09:43 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-30 11:09:43 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-09-30 11:33:11 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-09-30 11:33:11 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-10-05 22:22:35 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
-2021-10-05 22:22:35 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
-2021-10-05 22:22:35 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:12:35 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:12:52 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:12:52 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:13:03 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:13:03 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:16:16 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 11:16:16 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:16:16 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:16:25 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:16:25 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:16:36 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:16:36 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:17:10 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 11:17:10 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:17:10 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:17:19 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 11:17:19 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:17:27 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 11:17:27 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:18:16 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:18:16 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:18:28 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:18:28 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:18:38 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:18:38 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:26:26 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 11:27:03 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 11:27:03 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:27:03 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:27:33 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:27:33 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:27:45 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:27:45 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:37:45 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:37:45 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:37:51 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 11:37:51 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:37:51 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:37:59 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 11:37:59 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:38:52 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 11:38:52 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:38:52 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 11:44:33 [http-nio-8080-exec-1] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to find all products
+2021-10-06 11:44:33 [http-nio-8080-exec-1] ERROR com.example.shopapp.command.FindAllProductsCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to find all product
+2021-10-06 11:44:33 [http-nio-8080-exec-1] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to open page with products
+2021-10-06 11:44:34 [http-nio-8080-exec-2] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to find all products
+2021-10-06 11:44:34 [http-nio-8080-exec-2] ERROR com.example.shopapp.command.FindAllProductsCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to find all product
+2021-10-06 11:44:34 [http-nio-8080-exec-2] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to open page with products
+2021-10-06 11:44:34 [http-nio-8080-exec-3] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to find all products
+2021-10-06 11:44:34 [http-nio-8080-exec-3] ERROR com.example.shopapp.command.FindAllProductsCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to find all product
+2021-10-06 11:44:34 [http-nio-8080-exec-3] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to open page with products
+2021-10-06 11:44:39 [http-nio-8080-exec-4] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to find all products
+2021-10-06 11:44:39 [http-nio-8080-exec-4] ERROR com.example.shopapp.command.FindAllProductsCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to find all product
+2021-10-06 11:44:39 [http-nio-8080-exec-4] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to open page with products
+2021-10-06 11:44:43 [http-nio-8080-exec-6] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to find all products
+2021-10-06 11:44:43 [http-nio-8080-exec-6] ERROR com.example.shopapp.command.FindAllProductsCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to find all product
+2021-10-06 11:44:43 [http-nio-8080-exec-6] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to open page with products
+2021-10-06 11:44:45 [http-nio-8080-exec-8] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to find all products
+2021-10-06 11:44:45 [http-nio-8080-exec-8] ERROR com.example.shopapp.command.FindAllProductsCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to find all product
+2021-10-06 11:44:45 [http-nio-8080-exec-8] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to open page with products
+2021-10-06 11:44:50 [http-nio-8080-exec-10] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to find all products
+2021-10-06 11:44:50 [http-nio-8080-exec-10] ERROR com.example.shopapp.command.FindAllProductsCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to find all product
+2021-10-06 11:44:50 [http-nio-8080-exec-10] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to open page with products
+2021-10-06 12:15:58 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 12:15:58 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 12:15:58 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 12:22:39 [http-nio-8080-exec-7] ERROR com.example.shopapp.command.AddNewProductCommand - com.example.shopapp.exception.ServiceException: 1
+2021-10-06 14:22:36 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 1
+2021-10-06 14:22:44 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 2
+2021-10-06 14:22:51 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.ModifyProductCommand - com.example.shopapp.exception.ServiceException: 3
+2021-10-06 14:24:11 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 14:24:11 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 14:24:19 [http-nio-8080-exec-4] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 15:09:30 [http-nio-8080-exec-2] ERROR com.example.shopapp.dao.ProductDao - java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`bikeshopdb`.`order_has_product`, CONSTRAINT `fk_Order_has_Product_Product1` FOREIGN KEY (`Product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+2021-10-06 15:09:30 [http-nio-8080-exec-2] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to delete product
+2021-10-06 15:09:30 [http-nio-8080-exec-2] ERROR com.example.shopapp.command.DeleteProductCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to delete product
+2021-10-06 15:09:30 [http-nio-8080-exec-2] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to delete product
+2021-10-06 15:11:15 [http-nio-8080-exec-5] ERROR com.example.shopapp.dao.ProductDao - java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`bikeshopdb`.`order_has_product`, CONSTRAINT `fk_Order_has_Product_Product1` FOREIGN KEY (`Product_id`) REFERENCES `product` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+2021-10-06 15:11:15 [http-nio-8080-exec-5] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to delete product
+2021-10-06 15:11:15 [http-nio-8080-exec-5] ERROR com.example.shopapp.command.DeleteProductCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to delete product
+2021-10-06 15:11:15 [http-nio-8080-exec-5] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to delete product
+2021-10-06 15:14:40 [http-nio-8080-exec-8] ERROR com.example.shopapp.dao.ProductDao - java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`bikeshopdb`.`order_has_product`, CONSTRAINT `fk_Order_has_Product_Product1` FOREIGN KEY (`Product_id`) REFERENCES `product` (`id`) ON UPDATE RESTRICT)
+2021-10-06 15:14:40 [http-nio-8080-exec-8] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to delete product
+2021-10-06 15:14:40 [http-nio-8080-exec-8] ERROR com.example.shopapp.command.DeleteProductCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to delete product
+2021-10-06 15:14:40 [http-nio-8080-exec-8] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to delete product

@@ -2,6 +2,7 @@ package com.example.shopapp.service;
 
 import com.example.shopapp.dao.ProductDao;
 
+import com.example.shopapp.entity.Order;
 import com.example.shopapp.entity.Product;
 import com.example.shopapp.exception.DaoException;
 import com.example.shopapp.exception.ServiceException;
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
@@ -80,6 +82,17 @@ public class ProductServiceImpl implements ProductService {
         int startIndex = (currentPageNo - 1) * 8;
         int endIndex = (startIndex + 8 > totalList.size() ? totalList.size() : startIndex + 8);
         return totalList.subList(startIndex, endIndex);
+    }
+
+    public void calculateRecords(HttpServletRequest req,
+                                 List<Product> productsAfterFilter, int page){
+        int recordsPerPage = 8;
+        int noOfRecords = productsAfterFilter.size();
+        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+        List<Product> currentPageRecords = getCurrentPageRecords(productsAfterFilter, page);
+        req.getSession().setAttribute("currentPageRecords", currentPageRecords);
+        req.getSession().setAttribute("currentPage", page);
+        req.getSession().setAttribute("noOfPages", noOfPages);
     }
 
     private void checkValidation(String name, String description, String color, String price, String madeIn, String category) throws ServiceException {

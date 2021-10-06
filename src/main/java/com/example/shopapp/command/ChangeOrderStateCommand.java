@@ -1,22 +1,16 @@
 package com.example.shopapp.command;
 
 import com.example.shopapp.entity.Order;
-import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.CommandException;
 import com.example.shopapp.exception.ServiceException;
 import com.example.shopapp.service.OrderService;
 import com.example.shopapp.service.OrderServiceImpl;
-import com.example.shopapp.service.UserService;
-import com.example.shopapp.service.UserServiceImpl;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 public class ChangeOrderStateCommand implements ICommand {
@@ -29,7 +23,6 @@ public class ChangeOrderStateCommand implements ICommand {
         String currentState;
         String futureState = req.getParameter("state");
         int page = 1;
-        int recordsPerPage = 5;
         List<Order> allOrdersList = null;
         try {
             currentState = orderService.findOrderStateById(orderId);
@@ -60,12 +53,7 @@ public class ChangeOrderStateCommand implements ICommand {
                 LOGGER.log(Level.INFO, e);
             }
             if (allOrdersList != null) {
-                int noOfRecords = allOrdersList.size();
-                int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-                List<Order> paginationOrders = orderService.getCurrentPageRecords(allOrdersList, page);
-                req.getSession().setAttribute("noOfPagesOrders", noOfPages);
-                req.getSession().setAttribute("currentPageOrders", page);
-                req.getSession().setAttribute("currentPageRecordsOrders", paginationOrders);
+                orderService.calculateRecords(req, page, allOrdersList);
             }
         }
         return "allOrders.jsp";

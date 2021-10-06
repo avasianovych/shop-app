@@ -3,6 +3,7 @@ package com.example.shopapp.service;
 import com.example.shopapp.entity.Product;
 import com.example.shopapp.exception.ServiceException;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface ProductService {
@@ -18,4 +19,7 @@ public interface ProductService {
     void delete(int productId) throws ServiceException;
 
     List<Product> getCurrentPageRecords(List<Product> totalList, int currentPageNo);
+
+    void calculateRecords(HttpServletRequest req,
+                          List<Product> productsAfterFilter, int page);
 }

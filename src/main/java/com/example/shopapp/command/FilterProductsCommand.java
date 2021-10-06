@@ -20,13 +20,9 @@ public class FilterProductsCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
         int page = 1;
-        int recordsPerPage = 8;
-        int noOfRecords;
-        int noOfPages = 0;
         int category = 0;
         int priceFrom = 0;
         int priceTo = 0;
-        List<Product> currentPageRecords = null;
         String color = req.getParameter("color");
         User user = (User) req.getSession().getAttribute("user");
         try {
@@ -56,18 +52,14 @@ public class FilterProductsCommand implements ICommand {
             List<Product> colorProducts = products.stream()
                     .filter(a -> a.getColor().equals(color)).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", colorProducts);
-            noOfRecords = colorProducts.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(colorProducts, 1);
+            productService.calculateRecords(req, colorProducts, page);
         }
         if (category != 0 && color == null && priceFrom == 0 && priceTo == 0) {
             int finalCategory = category;
             List<Product> categoryProducts = products.stream()
                     .filter(a -> a.getCategory_id() == finalCategory).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", categoryProducts);
-            noOfRecords = categoryProducts.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(categoryProducts, 1);
+            productService.calculateRecords(req, categoryProducts, page);
         }
         if (category != 0 && color != null && priceFrom == 0 && priceTo == 0) {
             int finalCategory = category;
@@ -76,27 +68,21 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getColor().equals(color))
                     .collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", colorCategoryProducts);
-            noOfRecords = colorCategoryProducts.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(colorCategoryProducts, 1);
+            productService.calculateRecords(req, colorCategoryProducts, page);
         }
         if (priceFrom != 0 && priceTo == 0 && color == null && category == 0) {
             int finalPriceFrom = priceFrom;
             List<Product> priceFromProducts = products.stream()
                     .filter(a -> a.getPrice() >= finalPriceFrom).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceFromProducts);
-            noOfRecords = priceFromProducts.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceFromProducts, 1);
+            productService.calculateRecords(req, priceFromProducts, page);
         }
         if (priceTo != 0 && priceFrom == 0 && color == null && category == 0) {
             int finalPriceTo = priceTo;
             List<Product> priceToProducts = products.stream()
                     .filter(a -> a.getPrice() <= finalPriceTo).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceToProducts);
-            noOfRecords = priceToProducts.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceToProducts, 1);
+            productService.calculateRecords(req, priceToProducts, page);
         }
         if (priceTo != 0 && priceFrom != 0 && color == null && category == 0) {
             int finalPriceTo = priceTo;
@@ -105,9 +91,7 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getPrice() <= finalPriceTo)
                     .filter(a -> a.getPrice() >= finalPriceFrom).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceFromToProducts);
-            noOfRecords = priceFromToProducts.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceFromToProducts, 1);
+            productService.calculateRecords(req, priceFromToProducts, page);
         }
         if (priceTo != 0 && priceFrom != 0 && color != null && category == 0) {
             int finalPriceTo = priceTo;
@@ -117,9 +101,7 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getPrice() >= finalPriceFrom)
                     .filter(a -> a.getColor().equals(color)).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceFromToWithColorProducts);
-            noOfRecords = priceFromToWithColorProducts.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceFromToWithColorProducts, 1);
+            productService.calculateRecords(req, priceFromToWithColorProducts, page);
         }
         if (priceTo != 0 && priceFrom != 0 && color == null && category != 0) {
             int finalPriceTo = priceTo;
@@ -130,9 +112,7 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getPrice() >= finalPriceFrom)
                     .filter(a -> a.getCategory_id() == finalCategory).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceFromToWithCategoryProducts);
-            noOfRecords = priceFromToWithCategoryProducts.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceFromToWithCategoryProducts, 1);
+            productService.calculateRecords(req, priceFromToWithCategoryProducts, page);
         }
         if (priceTo != 0 && priceFrom != 0 && color != null && category != 0) {
             int finalPriceTo = priceTo;
@@ -144,9 +124,7 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getCategory_id() == finalCategory)
                     .filter(a -> a.getColor().equals(color)).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceFromToWithCategoryAndColorProducts);
-            noOfRecords = priceFromToWithCategoryAndColorProducts.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceFromToWithCategoryAndColorProducts, 1);
+            productService.calculateRecords(req, priceFromToWithCategoryAndColorProducts, page);
         }
         if (priceTo != 0 && priceFrom == 0 && color != null && category == 0) {
             int finalPriceTo = priceTo;
@@ -154,9 +132,7 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getPrice() <= finalPriceTo)
                     .filter(a -> a.getColor().equals(color)).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceToWithColor);
-            noOfRecords = priceToWithColor.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceToWithColor, 1);
+            productService.calculateRecords(req, priceToWithColor, page);
         }
         if (priceTo == 0 && priceFrom != 0 && color != null && category == 0) {
             int finalPriceFrom = priceFrom;
@@ -164,9 +140,7 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getPrice() >= finalPriceFrom)
                     .filter(a -> a.getColor().equals(color)).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceFromWithColor);
-            noOfRecords = priceFromWithColor.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceFromWithColor, 1);
+            productService.calculateRecords(req, priceFromWithColor, page);
         }
         if (priceTo != 0 && priceFrom == 0 && color == null && category != 0) {
             int finalPriceTo = priceTo;
@@ -175,9 +149,7 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getPrice() <= finalPriceTo)
                     .filter(a -> a.getCategory_id() == finalCategory).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceToWithCategory);
-            noOfRecords = priceToWithCategory.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceToWithCategory, 1);
+            productService.calculateRecords(req, priceToWithCategory, page);
         }
         if (priceTo == 0 && priceFrom != 0 && color == null && category != 0) {
             int finalPriceFrom = priceFrom;
@@ -186,9 +158,7 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getPrice() >= finalPriceFrom)
                     .filter(a -> a.getCategory_id() == finalCategory).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceFromWithCategory);
-            noOfRecords = priceFromWithCategory.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceFromWithCategory, 1);
+            productService.calculateRecords(req, priceFromWithCategory, page);
         }
         if (priceTo != 0 && category != 0 && color != null && priceFrom == 0) {
             int finalPriceTo = priceTo;
@@ -198,9 +168,7 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getColor().equals(color))
                     .filter(a -> a.getCategory_id() == finalCategory).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceToWithColorAndCategory);
-            noOfRecords = priceToWithColorAndCategory.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceToWithColorAndCategory, 1);
+            productService.calculateRecords(req, priceToWithColorAndCategory, page);
         }
         if (priceTo == 0 && category != 0 && color != null && priceFrom != 0) {
             int finalPriceFrom = priceFrom;
@@ -210,13 +178,8 @@ public class FilterProductsCommand implements ICommand {
                     .filter(a -> a.getColor().equals(color))
                     .filter(a -> a.getCategory_id() == finalCategory).collect(Collectors.toList());
             req.getSession().setAttribute("allProducts", priceFromWithColorAndCategory);
-            noOfRecords = priceFromWithColorAndCategory.size();
-            noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            currentPageRecords = productService.getCurrentPageRecords(priceFromWithColorAndCategory, 1);
+            productService.calculateRecords(req, priceFromWithColorAndCategory, page);
         }
-        req.getSession().setAttribute("currentPageRecords", currentPageRecords);
-        req.getSession().setAttribute("currentPage", page);
-        req.getSession().setAttribute("noOfPages", noOfPages);
         if (user != null && user.getRole_id() == 1) {
             return "admin.jsp";
         }

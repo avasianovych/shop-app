@@ -29,6 +29,8 @@ public class GetAllUsersCommand implements ICommand {
                 throw new CommandException("an error occurred while trying to show all users");
             }
         }
+        req.getSession().removeAttribute("errorModifyProduct");
+        req.getSession().removeAttribute("errorAddNewProduct");
         return "allUsers.jsp";
     }
 }

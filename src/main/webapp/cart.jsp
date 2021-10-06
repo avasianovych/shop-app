@@ -29,7 +29,7 @@
             <td>$${cart.price}</td>
             <td>
                 <form action="controller" method="post">
-                    <input name="command" type="hidden" value="quanityIncDec">
+                    <input name="command" type="hidden" value="quantityIncDec">
                     <input type="hidden" name="id" value="${cart.id}" class="form-input">
                     <div class="form-group d-flex justify-content-between w-50">
                         <button type="submit" class="fas fa-plus-square btn-sm btn-primary" name="action" value="inc"></button>

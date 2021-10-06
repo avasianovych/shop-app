@@ -18,7 +18,6 @@ public class SortProductsCommand implements ICommand {
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
         int page = 1;
         int recordsPerPage = 8;
-
         User user = (User) req.getSession().getAttribute("user");
         @SuppressWarnings("unchecked")
         List<Product> products = (List<Product>) req.getSession().getAttribute("allProducts");

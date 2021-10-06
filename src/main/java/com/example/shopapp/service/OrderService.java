@@ -6,6 +6,7 @@ import com.example.shopapp.entity.Product;
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.ServiceException;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface OrderService {
@@ -23,4 +24,8 @@ public interface OrderService {
     void setCancelledState(int orderId, String stateName) throws ServiceException;
 
     List<Order> getCurrentPageRecords(List<Order> totalList, int currentPageNo);
+
+    void calculateRecords(HttpServletRequest req,
+                                    int page,
+                                    List<Order> allOrdersList);
 }

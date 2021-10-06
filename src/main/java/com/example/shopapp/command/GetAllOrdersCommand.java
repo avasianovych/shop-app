@@ -20,7 +20,6 @@ public class GetAllOrdersCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws CommandException {
         int page = 1;
-        int recordsPerPage = 5;
         List<Order> allOrdersList;
         String role = (String) req.getSession().getAttribute("role");
         if (role != null && role.equals("admin")) {
@@ -31,12 +30,9 @@ public class GetAllOrdersCommand implements ICommand {
                 LOGGER.log(Level.ERROR, e);
                 throw new CommandException("an error occurred while trying to show all orders");
             }
-            int noOfRecords = allOrdersList.size();
-            int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-            List<Order> paginationOrders = orderService.getCurrentPageRecords(allOrdersList, page);
-            req.getSession().setAttribute("noOfPagesOrders", noOfPages);
-            req.getSession().setAttribute("currentPageOrders", page);
-            req.getSession().setAttribute("currentPageRecordsOrders", paginationOrders);
+            orderService.calculateRecords(req, page, allOrdersList);
+            req.getSession().removeAttribute("errorModifyProduct");
+            req.getSession().removeAttribute("errorAddNewProduct");
         }
         return "allOrders.jsp";
     }

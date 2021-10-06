@@ -3,7 +3,6 @@ package com.example.shopapp.service;
 import com.example.shopapp.dao.OrderDao;
 import com.example.shopapp.entity.Cart;
 import com.example.shopapp.entity.Order;
-import com.example.shopapp.entity.Product;
 import com.example.shopapp.entity.User;
 import com.example.shopapp.exception.DaoException;
 import com.example.shopapp.exception.ServiceException;
@@ -11,6 +10,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
@@ -87,5 +87,17 @@ public class OrderServiceImpl implements OrderService {
         int startIndex = (currentPageNo - 1) * 5;
         int endIndex = (startIndex + 5 > totalList.size() ? totalList.size() : startIndex + 5);
         return totalList.subList(startIndex, endIndex);
+    }
+
+    public void calculateRecords(HttpServletRequest req,
+                    int page,
+                    List<Order> allOrdersList){
+        int recordsPerPage = 5;
+        int noOfRecords = allOrdersList.size();
+        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+        List<Order> paginationOrders = getCurrentPageRecords(allOrdersList, page);
+        req.getSession().setAttribute("noOfPagesOrders", noOfPages);
+        req.getSession().setAttribute("currentPageOrders", page);
+        req.getSession().setAttribute("currentPageRecordsOrders", paginationOrders);
     }
 }
