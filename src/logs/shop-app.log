@@ -1,3 +1,4 @@
+
 2021-10-06 11:12:35 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
 2021-10-06 11:12:52 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
 2021-10-06 11:12:52 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
@@ -84,3 +85,12 @@
 2021-10-06 15:14:40 [http-nio-8080-exec-8] ERROR com.example.shopapp.service.ProductServiceImpl - com.example.shopapp.exception.DaoException: an error occurred while trying to delete product
 2021-10-06 15:14:40 [http-nio-8080-exec-8] ERROR com.example.shopapp.command.DeleteProductCommand - com.example.shopapp.exception.ServiceException: an error occurred while trying to delete product
 2021-10-06 15:14:40 [http-nio-8080-exec-8] ERROR com.example.shopapp.FrontController - com.example.shopapp.exception.CommandException: an error occurred while trying to delete product
+2021-10-06 15:36:09 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 15:36:09 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 15:36:14 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-06 15:36:14 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 15:36:14 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 21:27:25 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 21:27:25 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 21:31:00 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-06 21:31:00 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
