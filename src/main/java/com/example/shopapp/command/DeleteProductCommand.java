@@ -14,7 +14,13 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ * The {@code DeleteProductCommand} class, responsible for deleting product
+ * by product ID.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class DeleteProductCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(DeleteProductCommand.class);
     ProductService productService = ProductServiceImpl.getInstance();

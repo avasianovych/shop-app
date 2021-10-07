@@ -13,6 +13,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+/**
+ * The {@code FrontController} class, represent main servlet in the application.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 @WebServlet("/controller")
 public class FrontController extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(FrontController.class);

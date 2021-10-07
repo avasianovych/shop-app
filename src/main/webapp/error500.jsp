@@ -17,12 +17,8 @@
 <h3 class="text-center">Oops! =( </h3>
 <h3 class="text-center">
     <c:out value="${error500}" />
-<%--<c:choose>--%>
-<%--    <c:when test="${error500 eq '1'}">--%>
-<%--        <p><fmt:message key="error500.login"/></p>--%>
-<%--    </c:when>--%>
-<%--</c:choose>--%>
 </h3>
+<h3 class="text-center">Sorry for inconvenience, we're working on it.</h3>
 <br/>
 <%@include file="/includes/footer.jsp"%>
 </body>

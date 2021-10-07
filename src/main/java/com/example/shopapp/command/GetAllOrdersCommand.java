@@ -13,6 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * The {@code GetAllOrdersCommand} class, responsible for finding all orders
+ * for admin role.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class GetAllOrdersCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(GetAllOrdersCommand.class);
     OrderService orderService = OrderServiceImpl.getInstance();

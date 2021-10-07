@@ -13,6 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The {@code FilterProductsCommand} class, responsible for filtering products
+ * by color, price and product category.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class FilterProductsCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(FilterProductsCommand.class);
     ProductService productService = ProductServiceImpl.getInstance();

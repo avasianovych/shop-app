@@ -14,6 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * The {@code GetUserOrdersCommand} class, responsible for finding all orders
+ * for user.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class GetUserOrdersCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(GetUserOrdersCommand.class);
     OrderService orderService = OrderServiceImpl.getInstance();

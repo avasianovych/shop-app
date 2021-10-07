@@ -13,6 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * The {@code BlockUnblockUserCommand} class, responsible for blocking or unblocking user
+ * by user ID.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class BlockUnblockUserCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(BlockUnblockUserCommand.class);
     UserService userService = UserServiceImpl.getInstance();

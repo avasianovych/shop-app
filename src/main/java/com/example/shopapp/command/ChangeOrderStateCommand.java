@@ -13,6 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * The {@code ChangeOrderStateCommand} class, responsible for changing order state(paid or cancelled).
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class ChangeOrderStateCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(ChangeOrderStateCommand.class);
     OrderService orderService = OrderServiceImpl.getInstance();

@@ -3,6 +3,13 @@ package com.example.shopapp.command;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The {@code CommandContainer} class, responsible for storing commands
+ * into HashMap.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class CommandContainer {
 
     private static Map<String, ICommand> commands;

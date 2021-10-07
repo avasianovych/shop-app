@@ -9,7 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 
-
+/**
+ * The {@code RemoveFromCartCommand} class, responsible for removing product
+ * from the cart.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class RemoveFromCartCommand implements ICommand {
     CartService cartService = CartServiceImpl.getInstance();
 

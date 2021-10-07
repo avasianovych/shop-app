@@ -15,6 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The {@code FindAllProductsCommand} class, responsible for finding all products
+ * and all product categories.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class FindAllProductsCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(FindAllProductsCommand.class);
     ProductService productService = ProductServiceImpl.getInstance();

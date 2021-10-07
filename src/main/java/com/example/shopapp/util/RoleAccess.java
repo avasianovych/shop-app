@@ -4,6 +4,12 @@ import java.util.HashSet;
 
 import java.util.Set;
 
+/**
+ * The {@code RoleAccess} class, responsible for storing commands for particular role.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class RoleAccess {
 
     private static Set<String> guestCommands = new HashSet<>();

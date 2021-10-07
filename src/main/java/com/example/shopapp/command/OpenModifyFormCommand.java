@@ -12,7 +12,13 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ * The {@code OpenModifyFormCommand} class, prepare information about product by product ID
+ * and return modifyProduct page.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class OpenModifyFormCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(OpenModifyFormCommand.class);
     ProductService productService = ProductServiceImpl.getInstance();

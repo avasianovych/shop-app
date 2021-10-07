@@ -1,6 +1,5 @@
 package com.example.shopapp.command;
 
-
 import com.example.shopapp.exception.ServiceException;
 import com.example.shopapp.service.ProductService;
 import com.example.shopapp.service.ProductServiceImpl;
@@ -12,7 +11,12 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ * The {@code AddNewProductCommand} class, responsible for creating a new product.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class AddNewProductCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(AddNewProductCommand.class);
     ProductService productService = ProductServiceImpl.getInstance();

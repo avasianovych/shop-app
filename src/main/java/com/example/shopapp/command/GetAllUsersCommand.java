@@ -13,6 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * The {@code GetAllUsersCommand} class, responsible for finding all users
+ * for admin role.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class GetAllUsersCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(GetAllUsersCommand.class);
     UserService userService = UserServiceImpl.getInstance();

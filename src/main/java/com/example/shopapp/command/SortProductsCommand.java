@@ -11,6 +11,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The {@code SortProductsCommand} class, responsible for sorting products
+ * by name(a-z, z-a), price(high to low, low to high) and creation date.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class SortProductsCommand implements ICommand {
     ProductService productService = ProductServiceImpl.getInstance();
 

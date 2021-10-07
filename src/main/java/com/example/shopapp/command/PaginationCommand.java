@@ -12,6 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * The {@code PaginationCommand} class, responsible for pagination for products
+ * and all orders.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class PaginationCommand implements ICommand {
     ProductService productService = ProductServiceImpl.getInstance();
     OrderService orderService = OrderServiceImpl.getInstance();

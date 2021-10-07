@@ -16,6 +16,12 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code AddToCartCommand} class, responsible for adding product to the cart.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class AddToCartCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(AddToCartCommand.class);
     CartService cartService = CartServiceImpl.getInstance();

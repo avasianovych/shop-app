@@ -15,6 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * The {@code GetOrderItemsCommand} class, responsible for finding all user's
+ * items in order by order ID.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class GetOrderItemsCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(GetOrderItemsCommand.class);
     OrderItemsService orderItemsService = OrderItemsServiceImpl.getInstance();

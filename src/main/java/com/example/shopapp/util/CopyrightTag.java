@@ -8,6 +8,12 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
+/**
+ * The {@code CopyrightTag} class, represent creating copyright tag.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class CopyrightTag extends TagSupport {
     private static final Logger LOGGER = LogManager.getLogger(CopyrightTag.class);
     private static final String COPYRIGHT_SYMBOL = "© ";

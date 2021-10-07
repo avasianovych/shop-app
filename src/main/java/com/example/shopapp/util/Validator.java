@@ -1,5 +1,12 @@
 package com.example.shopapp.util;
 
+/**
+ * The {@code Validator} class, responsible for validation login, password,
+ * product name, description, color, price and field made in.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class Validator {
 
     private static final String LOGIN_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";

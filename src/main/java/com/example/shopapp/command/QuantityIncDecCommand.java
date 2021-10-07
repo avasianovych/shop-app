@@ -1,6 +1,5 @@
 package com.example.shopapp.command;
 
-
 import com.example.shopapp.entity.Cart;
 import com.example.shopapp.exception.CommandException;
 import com.example.shopapp.exception.ServiceException;
@@ -17,6 +16,13 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code QuantityIncDecCommand} class, responsible for increasing or decreasing
+ * product quantity into cart.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class QuantityIncDecCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(QuantityIncDecCommand.class);
     CartService cartService = CartServiceImpl.getInstance();

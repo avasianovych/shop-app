@@ -12,7 +12,12 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ * The {@code ModifyProductCommand} class, responsible for modifying product by product ID.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class ModifyProductCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(ModifyProductCommand.class);
     ProductService productService = ProductServiceImpl.getInstance();

@@ -12,7 +12,13 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ * The {@code LoginCommand} class, responsible for authentication
+ * and authorization user.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class LoginCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(LoginCommand.class);
     UserService userService = UserServiceImpl.getInstance();

@@ -11,6 +11,12 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * The {@code RegistrationCommand} class, responsible for registration new user.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class RegistrationCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(RegistrationCommand.class);
     UserService userService = UserServiceImpl.getInstance();

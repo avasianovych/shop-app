@@ -7,10 +7,16 @@
     <%@include file="/includes/head.jsp"%>
 </head>
 <body>
-
+<c:if test="${role eq 'user' || role == null}">
     <%@include file="/includes/navbar.jsp"%>
+</c:if>
+<c:if test="${role eq 'admin'}">
+    <%@include file="/includes/navbarForAdmin.jsp"%>
+</c:if>
 <br/>
-<h3 class="text-center">Oops! =( </h3>
+<h3 class="text-center">Oops! =(</h3>
+<h3 class="text-center">This page doesn't exist.</h3>
+
 <br/>
 <%@include file="/includes/footer.jsp"%>
 </body>

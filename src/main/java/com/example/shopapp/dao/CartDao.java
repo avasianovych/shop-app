@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CartDao extends AbstractDao<Cart>{
     private static final Logger LOGGER = LogManager.getLogger(CartDao.class);
     private static final CartDao INSTANCE = new CartDao();

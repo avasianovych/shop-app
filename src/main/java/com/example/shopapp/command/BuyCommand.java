@@ -15,6 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * The {@code BuyCommand} class, responsible for creating a new order for user.
+ *
+ * @author Andrii Vasianovych
+ * @version 1.0
+ */
 public class BuyCommand implements ICommand {
     private static final Logger LOGGER = LogManager.getLogger(BuyCommand.class);
     OrderService orderService = OrderServiceImpl.getInstance();
