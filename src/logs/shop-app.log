@@ -43,3 +43,7 @@ com.example.shopapp.exception.ServiceException: 1
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.52]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-util.jar:9.0.52]
 	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_291]
+2021-10-07 11:21:47 [http-nio-8080-exec-2] ERROR com.example.shopapp.filter.RoleFilter - Role null has no access to command logout
+2021-10-07 11:22:16 [http-nio-8080-exec-5] ERROR com.example.shopapp.filter.RoleFilter - Role null has no access to command logout
+2021-10-07 11:22:17 [http-nio-8080-exec-7] ERROR com.example.shopapp.filter.RoleFilter - Role null has no access to command logout
+2021-10-07 11:22:19 [http-nio-8080-exec-9] ERROR com.example.shopapp.filter.RoleFilter - Role null has no access to command logout

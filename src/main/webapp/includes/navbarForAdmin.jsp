@@ -30,7 +30,11 @@
                 <li class="nav-item"><a class="nav-link text-white" href="admin.jsp"><fmt:message key="header.products"/></a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="/controller?command=getAllUsers"><fmt:message key="header.users"/></a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="/controller?command=getAllOrders"><fmt:message key="header.orders"/></a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="/controller?command=logout"><fmt:message key="header.logout"/></a></li>
+                <li class="nav-item">
+                    <form action="controller" method="post">
+                        <input name="command" type="hidden" value="logout">
+                        <button type="submit" style="text-align: center" class="nav-link btn btn-secondary text-white"><fmt:message key="header.logout"/></button>
+                    </form></li>
             </ul>
         </div>
     </div>
