@@ -32,7 +32,6 @@ public class CommandContainer {
         commands.put("getUserOrders", new GetUserOrdersCommand());
         commands.put("getAllUsers", new GetAllUsersCommand());
         commands.put("getAllOrders", new GetAllOrdersCommand());
-
     }
 
     public static ICommand getCommand(String commandName) {

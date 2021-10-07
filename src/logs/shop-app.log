@@ -94,3 +94,75 @@
 2021-10-06 21:27:25 [http-nio-8080-exec-2] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
 2021-10-06 21:31:00 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
 2021-10-06 21:31:00 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 01:44:46 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-07 01:44:46 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 01:44:46 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 01:45:12 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 01:45:12 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 01:55:42 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 01:55:42 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:13:05 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-07 02:13:05 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:13:05 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:17:12 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:17:12 [http-nio-8080-exec-7] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:26:50 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.RegistrationCommand - an error occurred during registration
+com.example.shopapp.exception.ServiceException: 1
+	at com.example.shopapp.service.UserServiceImpl.add(UserServiceImpl.java:83) ~[classes/:?]
+	at com.example.shopapp.command.RegistrationCommand.execute(RegistrationCommand.java:35) [classes/:?]
+	at com.example.shopapp.FrontController.handleRequest(FrontController.java:39) [classes/:?]
+	at com.example.shopapp.FrontController.doPost(FrontController.java:29) [classes/:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) [servlet-api.jar:4.0.FR]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) [servlet-api.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) [catalina.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-websocket.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [catalina.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
+	at com.example.shopapp.filter.RoleFilter.doFilter(RoleFilter.java:48) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [catalina.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
+	at com.example.shopapp.filter.EncodingFilter.doFilter(EncodingFilter.java:20) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [catalina.jar:9.0.52]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.52]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [catalina.jar:9.0.52]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [catalina.jar:9.0.52]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [catalina.jar:9.0.52]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [catalina.jar:9.0.52]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [catalina.jar:9.0.52]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:687) [catalina.jar:9.0.52]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [catalina.jar:9.0.52]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) [catalina.jar:9.0.52]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) [tomcat-coyote.jar:9.0.52]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-coyote.jar:9.0.52]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) [tomcat-coyote.jar:9.0.52]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) [tomcat-coyote.jar:9.0.52]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-coyote.jar:9.0.52]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-util.jar:9.0.52]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.52]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-util.jar:9.0.52]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_291]
+2021-10-07 02:47:05 [http-nio-8080-exec-8] ERROR com.example.shopapp.filter.RoleFilter - Role null has no access to command getAllUsers
+2021-10-07 02:50:57 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-07 02:50:57 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:50:57 [http-nio-8080-exec-8] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:51:05 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:51:05 [http-nio-8080-exec-9] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:51:12 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:51:12 [http-nio-8080-exec-1] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:51:20 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-07 02:52:02 [http-nio-8080-exec-7] ERROR com.example.shopapp.filter.RoleFilter - Role null has no access to command buy
+2021-10-07 02:54:51 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-07 02:54:51 [http-nio-8080-exec-10] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:56:08 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-07 02:56:08 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:56:08 [http-nio-8080-exec-3] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:56:18 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: null
+2021-10-07 02:56:18 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:56:18 [http-nio-8080-exec-5] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:56:30 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:56:30 [http-nio-8080-exec-6] INFO  com.example.shopapp.command.FilterProductsCommand - java.lang.NumberFormatException: For input string: ""
+2021-10-07 02:58:34 [http-nio-8080-exec-5] ERROR com.example.shopapp.filter.RoleFilter - Role null has no access to command blockUnblockUser
+2021-10-07 02:58:40 [http-nio-8080-exec-7] ERROR com.example.shopapp.filter.RoleFilter - Role null has no access to command blockUnblockUser
+2021-10-07 02:58:41 [http-nio-8080-exec-9] ERROR com.example.shopapp.filter.RoleFilter - Role null has no access to command blockUnblockUser
+2021-10-07 03:01:22 [http-nio-8080-exec-10] ERROR com.example.shopapp.filter.RoleFilter - Role user has no access to command getAllOrders

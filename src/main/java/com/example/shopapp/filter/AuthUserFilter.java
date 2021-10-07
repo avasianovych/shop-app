@@ -22,7 +22,7 @@ public class AuthUserFilter extends HttpFilter {
         if (nonNull(role) && role.equals("user"))
             filterChain.doFilter(request, response);
         else {
-            RequestDispatcher dispatcher = ((HttpServletRequest) request).getSession().getServletContext().getRequestDispatcher("/error404.jsp"); // вызов страницы ответа на запрос
+            RequestDispatcher dispatcher = ((HttpServletRequest) request).getSession().getServletContext().getRequestDispatcher("/error403.jsp");
             dispatcher.forward(request, response);
         }
     }
